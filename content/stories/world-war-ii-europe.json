@@ -1,0 +1,68 @@
+{
+  "id": "world-war-ii-europe",
+  "epoch": "20th century",
+  "title": "World War II in Europe",
+  "summary": "From the invasion of Poland to the fall of Berlin, five turning points of the European war.",
+  "cover": "/stories/world-war-ii-europe/cover.jpg",
+  "pin": [13.4, 52.5],
+  "yearStart": 1939,
+  "yearEnd": 1945,
+  "map": { "center": [15, 50], "zoom": 3.6 },
+  "events": [
+    {
+      "id": "poland-1939",
+      "order": 1,
+      "year": 1939,
+      "dateLabel": "1939",
+      "title": "Invasion of Poland",
+      "coords": [21.0, 52.23],
+      "path": [[13.4, 52.52], [21.0, 52.23]],
+      "summary": "Germany invades Poland, triggering the war in Europe.",
+      "body": "On 1 September 1939 German forces crossed into Poland, with Soviet forces entering from the east weeks later.\n\nBritain and France declared war, opening the European conflict."
+    },
+    {
+      "id": "france-1940",
+      "order": 2,
+      "year": 1940,
+      "dateLabel": "1940",
+      "title": "Fall of France",
+      "coords": [2.35, 48.86],
+      "path": [[5.0, 49.9], [4.94, 49.7], [2.35, 48.86]],
+      "summary": "A thrust through the Ardennes collapses Allied lines and takes Paris.",
+      "body": "In May 1940 German armor broke through the Ardennes, bypassing the main Allied defenses.\n\nParis fell in June and France signed an armistice, leaving Britain alone in the west."
+    },
+    {
+      "id": "barbarossa-1941",
+      "order": 3,
+      "year": 1941,
+      "dateLabel": "1941",
+      "title": "Operation Barbarossa",
+      "coords": [37.62, 55.75],
+      "path": [[23.66, 52.08], [27.56, 53.9], [32.04, 54.78], [37.62, 55.75]],
+      "summary": "Germany launches the largest land invasion in history against the USSR.",
+      "body": "From June 1941 German armies drove deep into Soviet territory toward Moscow.\n\nThe advance stalled before the capital in winter, beginning a long war of attrition in the east."
+    },
+    {
+      "id": "d-day-1944",
+      "order": 4,
+      "year": 1944,
+      "dateLabel": "1944",
+      "title": "D-Day landings",
+      "coords": [-0.5, 49.34],
+      "path": [[-1.09, 50.8], [-0.5, 49.34]],
+      "summary": "Allied forces land in Normandy, opening the Western Front.",
+      "body": "On 6 June 1944 Allied troops landed on the beaches of Normandy in the largest seaborne invasion ever mounted.\n\nThe beachhead opened the campaign that would liberate Western Europe."
+    },
+    {
+      "id": "berlin-1945",
+      "order": 5,
+      "year": 1945,
+      "dateLabel": "1945",
+      "title": "Fall of Berlin",
+      "coords": [13.4, 52.52],
+      "path": [[21.0, 52.23], [14.38, 52.53], [13.4, 52.52]],
+      "summary": "Soviet forces take Berlin, ending the war in Europe.",
+      "body": "After crossing the Vistula and the Oder, Soviet armies encircled and stormed Berlin in April-May 1945.\n\nGermany surrendered, ending the European war."
+    }
+  ]
+}
