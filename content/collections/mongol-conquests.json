@@ -1,0 +1,123 @@
+{
+  "id": "mongol-conquests",
+  "epochId": "middle-ages",
+  "title": "Mongol Conquests",
+  "kind": "Conquest",
+  "tags": [
+    "Steppe",
+    "Empire",
+    "Central Asia"
+  ],
+  "summary": "Temüjin forged the Mongol tribes into an unstoppable war machine — shattering empires from China to the Caspian before his death remade the map of Eurasia.",
+  "pin": [
+    90,
+    45
+  ],
+  "yearStart": 1206,
+  "yearEnd": 1241,
+  "stories": [
+    {
+      "id": "genghis-empire",
+      "title": "Genghis Khan's Empire",
+      "summary": "From tribal unification on the steppe to the greatest land empire the world had seen.",
+      "tags": [
+        "Steppe",
+        "Empire-building"
+      ],
+      "yearStart": 1206,
+      "yearEnd": 1227,
+      "map": {
+        "center": [
+          85,
+          42
+        ],
+        "zoom": 3
+      },
+      "events": [
+        {
+          "id": "unification-of-tribes",
+          "order": 1,
+          "type": "founding",
+          "year": 1206,
+          "dateLabel": "1206",
+          "title": "Unification of the Tribes",
+          "coords": [
+            110,
+            47.5
+          ],
+          "body": "After decades of warfare among the Mongol clans, Temüjin defeated his rivals and was proclaimed Genghis Khan — universal ruler — at a kurultai on the Onon River. The scattered steppe peoples were welded into a single military nation.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Genghis_Khan"
+        },
+        {
+          "id": "fall-of-beijing",
+          "order": 2,
+          "type": "siege",
+          "year": 1215,
+          "dateLabel": "1214 – 1215",
+          "title": "Fall of Beijing",
+          "coords": [
+            116.41,
+            39.9
+          ],
+          "body": "Genghis Khan turned south against the Jin dynasty and laid siege to Zhongdu, their capital — modern Beijing. After a year of assault the city fell; fires burned for a month and the Jin court fled south, never to recover its northern heartland.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Mongol_conquest_of_the_Jin_dynasty"
+        },
+        {
+          "id": "conquest-of-khwarazm",
+          "order": 3,
+          "type": "conquest",
+          "year": 1219,
+          "dateLabel": "1219 – 1221",
+          "title": "Conquest of Khwarazm",
+          "coords": [
+            63.58,
+            41.55
+          ],
+          "body": "The execution of Mongol envoys by the Shah of Khwarazm provoked the most devastating campaign of Genghis Khan's life. Mongol armies overran Transoxiana, razed Samarkand and Urgench, and pursued the shah to his death on a Caspian island.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Mongol_invasion_of_Khwarazm"
+        },
+        {
+          "id": "battle-of-kalka-river",
+          "order": 4,
+          "type": "battle",
+          "year": 1223,
+          "dateLabel": "31 May 1223",
+          "title": "Battle of Kalka River",
+          "coords": [
+            37.5,
+            47.1
+          ],
+          "body": "A Mongol reconnaissance force clashed with a coalition of Rus' princes and Cumans on the steppe north of the Black Sea. The Mongols feigned retreat, drew their enemies into disorder, and annihilated them — a grim preview of invasions to come.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_the_Kalka_River"
+        },
+        {
+          "id": "death-of-genghis-khan",
+          "order": 5,
+          "type": "founding",
+          "year": 1227,
+          "dateLabel": "Aug 1227",
+          "title": "Death of Genghis Khan",
+          "coords": [
+            106,
+            38.5
+          ],
+          "body": "Genghis Khan died during a campaign against the Western Xia in northwestern China; the cause remains uncertain. His body was carried back to Mongolia in secret, and the empire was divided among his sons — setting the stage for further conquest.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Death_and_burial_of_Genghis_Khan"
+        }
+      ]
+    },
+    {
+      "id": "invasion-of-europe",
+      "title": "Invasion of Europe",
+      "summary": "The Mongol tide reaches Poland and Hungary.",
+      "tags": [
+        "Europe",
+        "Batu Khan"
+      ],
+      "comingSoon": true,
+      "yearStart": 1236,
+      "yearEnd": 1242,
+      "events": []
+    }
+  ]
+}
