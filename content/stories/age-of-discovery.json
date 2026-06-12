@@ -1,0 +1,68 @@
+{
+  "id": "age-of-discovery",
+  "epoch": "15-16th c.",
+  "title": "Age of Discovery",
+  "summary": "Columbus, da Gama, Cortes, Magellan-Elcano and Pizarro redraw the map of the world.",
+  "cover": "/stories/age-of-discovery/cover.jpg",
+  "pin": [-9.0, 38.0],
+  "yearStart": 1492,
+  "yearEnd": 1532,
+  "map": { "center": [-30, 15], "zoom": 1.6 },
+  "events": [
+    {
+      "id": "columbus",
+      "order": 1,
+      "year": 1492,
+      "dateLabel": "1492",
+      "title": "Columbus reaches the Americas",
+      "coords": [-74.5, 24.0],
+      "path": [[-6.9, 37.2], [-15.6, 28.1], [-74.5, 24.0]],
+      "summary": "The first Spanish crossing of the Atlantic makes landfall in the Bahamas.",
+      "body": "Sailing west from Palos under the Castilian crown, Columbus reached the Bahamas in October 1492, believing he had found a route to Asia.\n\nThe landfall opened sustained European contact with the Americas."
+    },
+    {
+      "id": "da-gama",
+      "order": 2,
+      "year": 1498,
+      "dateLabel": "1497-1499",
+      "title": "Vasco da Gama reaches India",
+      "coords": [75.78, 11.25],
+      "path": [[-9.14, 38.7], [18.47, -34.36], [40.1, -3.2], [75.78, 11.25]],
+      "summary": "Portugal opens a sea route to India around the Cape of Good Hope.",
+      "body": "Da Gama rounded southern Africa and crossed the Indian Ocean to Calicut, establishing the first all-sea trade route between Europe and India.\n\nIt broke the overland spice monopoly and launched Portugal's maritime empire."
+    },
+    {
+      "id": "cortes",
+      "order": 3,
+      "year": 1521,
+      "dateLabel": "1519-1521",
+      "title": "Cortes and the fall of Tenochtitlan",
+      "coords": [-99.13, 19.43],
+      "path": [[-96.13, 19.17], [-98.24, 19.32], [-99.13, 19.43]],
+      "summary": "A Spanish-led march inland topples the Aztec capital.",
+      "body": "Landing near Veracruz in 1519, Cortes marched inland, forging alliances with rivals of the Mexica.\n\nAfter the siege of 1521, Tenochtitlan fell, opening central Mexico to Spanish rule."
+    },
+    {
+      "id": "magellan",
+      "order": 4,
+      "year": 1521,
+      "dateLabel": "1519-1522",
+      "title": "Magellan-Elcano circumnavigation",
+      "coords": [123.95, 10.3],
+      "path": [[-6.35, 36.78], [-43.2, -22.9], [-70.0, -53.0], [144.8, 13.4], [123.95, 10.3], [18.47, -34.36], [-6.35, 36.78]],
+      "summary": "The first voyage around the globe, completed by Elcano.",
+      "body": "Magellan's expedition crossed the Atlantic, threaded the strait that bears his name, and reached the Pacific; Magellan died at Mactan in 1521.\n\nElcano brought the survivors home in 1522, proving the world could be circled by sea."
+    },
+    {
+      "id": "pizarro",
+      "order": 5,
+      "year": 1532,
+      "dateLabel": "1532",
+      "title": "Pizarro and the conquest of Peru",
+      "coords": [-78.5, -7.16],
+      "path": [[-79.5, 8.98], [-80.45, -3.57], [-78.5, -7.16], [-71.97, -13.53]],
+      "summary": "The Inca emperor is captured at Cajamarca.",
+      "body": "Pizarro advanced from Panama down the Pacific coast and inland to Cajamarca, where he seized the Inca ruler Atahualpa in 1532.\n\nThe campaign brought the Inca Empire under Spanish control within a few years."
+    }
+  ]
+}
