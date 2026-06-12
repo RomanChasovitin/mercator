@@ -1,26 +1,47 @@
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { StorySchema, type Story } from "@/lib/content/schema";
+import { CollectionSchema, type Collection } from "@/lib/content/schema";
+import { EPOCHS } from "@/content/epochs";
 
-const STORIES_DIR = join(process.cwd(), "content", "stories");
+const COLLECTIONS_DIR = join(process.cwd(), "content", "collections");
+const MANIFEST_PATH = join(process.cwd(), "public", "cache", "manifest.json");
 
-/**
- * Reads and validates every story JSON file. Throws on the first invalid
- * dataset so a broken file fails the build.
- */
-export function loadStories(): Story[] {
-  const files = readdirSync(STORIES_DIR).filter((f) => f.endsWith(".json"));
-  const stories = files.map((file) => {
-    const raw = JSON.parse(readFileSync(join(STORIES_DIR, file), "utf8"));
-    const result = StorySchema.safeParse(raw);
-    if (!result.success) {
-      throw new Error(`Invalid story "${file}": ${result.error.message}`);
-    }
-    return result.data;
-  });
-  return stories.sort((a, b) => a.yearStart - b.yearStart);
+function imageManifest(): Record<string, string> {
+  if (!existsSync(MANIFEST_PATH)) return {};
+  return JSON.parse(readFileSync(MANIFEST_PATH, "utf8")) as Record<string, string>;
 }
 
-export function getStory(id: string): Story | undefined {
-  return loadStories().find((s) => s.id === id);
+function resolveImages(collection: Collection, manifest: Record<string, string>): Collection {
+  const map = (url?: string) => (url && manifest[url]) || url;
+  return {
+    ...collection,
+    cover: map(collection.cover),
+    stories: collection.stories.map((s) => ({
+      ...s,
+      events: s.events.map((e) => ({
+        ...e,
+        images: e.images?.map((img) => ({ ...img, src: map(img.src) as string })),
+      })),
+    })),
+  };
+}
+
+export function loadCollections(): Collection[] {
+  const manifest = imageManifest();
+  const files = readdirSync(COLLECTIONS_DIR).filter((f) => f.endsWith(".json"));
+  const collections = files.map((file) => {
+    const raw = JSON.parse(readFileSync(join(COLLECTIONS_DIR, file), "utf8"));
+    const result = CollectionSchema.safeParse(raw);
+    if (!result.success) throw new Error(`Invalid collection "${file}": ${result.error.message}`);
+    return resolveImages(result.data, manifest);
+  });
+  return collections.sort((a, b) => a.yearStart - b.yearStart);
+}
+
+export function loadEpochs() {
+  return EPOCHS;
+}
+
+export function getCollection(id: string): Collection | undefined {
+  return loadCollections().find((c) => c.id === id);
 }
