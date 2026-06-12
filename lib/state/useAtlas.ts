@@ -6,7 +6,6 @@ import {
   initialState,
   searchToState,
   stateToSearch,
-  type AtlasAction,
   type AtlasState,
 } from "@/lib/state/atlas";
 
