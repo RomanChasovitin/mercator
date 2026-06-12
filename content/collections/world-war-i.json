@@ -1,0 +1,31 @@
+{
+  "id": "world-war-i",
+  "epochId": "modern-era",
+  "title": "World War I",
+  "kind": "War",
+  "tags": ["Trenches", "Western Front", "Total war"],
+  "summary": "The Great War consumed a generation in mud and machine guns, reshaping borders and planting the seeds of an even deadlier conflict.",
+  "pin": [3.0, 50.0],
+  "yearStart": 1914,
+  "yearEnd": 1918,
+  "stories": [
+    {
+      "id": "western-front",
+      "title": "The Western Front",
+      "summary": "From the Schlieffen Plan to the Armistice — five turning points in the war of attrition.",
+      "tags": ["Trenches", "Allies"],
+      "yearStart": 1914,
+      "yearEnd": 1918,
+      "map": { "center": [3.0, 50.0], "zoom": 5 },
+      "events": [
+        { "id": "belgium-invasion", "order": 1, "type": "conquest", "year": 1914, "dateLabel": "Aug 1914", "title": "Invasion of Belgium", "coords": [4.35, 50.85], "body": "German armies swept through neutral Belgium en route to France. The violation of Belgian sovereignty brought Britain into the war and fixed the Western Front's northern anchor.", "wikipedia": "https://en.wikipedia.org/wiki/German_occupation_of_Belgium_during_World_War_I" },
+        { "id": "first-marne", "order": 2, "type": "battle", "year": 1914, "dateLabel": "Sep 1914", "title": "First Marne", "coords": [3.4, 48.85], "body": "Allied forces counter-attacked along the Marne and halted the German advance on Paris. The 'miracle of the Marne' ended hopes of a quick victory.", "wikipedia": "https://en.wikipedia.org/wiki/First_Battle_of_the_Marne" },
+        { "id": "verdun", "order": 3, "type": "battle", "year": 1916, "dateLabel": "Feb–Dec 1916", "title": "Verdun", "coords": [5.38, 49.16], "body": "Germany aimed to bleed France white at Verdun. Months of slaughter around the fortress became the symbol of industrialised attrition.", "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Verdun" },
+        { "id": "the-somme", "order": 4, "type": "battle", "year": 1916, "dateLabel": "Jul–Nov 1916", "title": "The Somme", "coords": [2.7, 50.0], "body": "British and French offensives on the Somme produced over a million casualties for minimal gain. The first day alone cost the British Army nearly 60,000 men.", "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_the_Somme" },
+        { "id": "armistice", "order": 5, "type": "treaty", "year": 1918, "dateLabel": "11 Nov 1918", "title": "Armistice", "coords": [3.0, 49.42], "body": "Allied pressure and internal collapse forced Germany to sign an armistice in a railway carriage at Compiègne. The guns fell silent at the eleventh hour of the eleventh day.", "wikipedia": "https://en.wikipedia.org/wiki/Armistice_of_11_November_1918" }
+      ]
+    },
+    { "id": "eastern-front-ww1", "title": "The Eastern Front", "summary": "The vast campaigns between Germany, Austria-Hungary, and Russia.", "tags": ["Russia", "Eastern Europe"], "comingSoon": true, "yearStart": 1914, "yearEnd": 1918, "events": [] },
+    { "id": "war-at-sea", "title": "War at Sea", "summary": "Jutland, U-boats, and the blockade of Germany.", "tags": ["Naval", "Blockade"], "comingSoon": true, "yearStart": 1914, "yearEnd": 1918, "events": [] }
+  ]
+}
