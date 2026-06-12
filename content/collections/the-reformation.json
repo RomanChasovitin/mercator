@@ -1,0 +1,123 @@
+{
+  "id": "the-reformation",
+  "epochId": "renaissance",
+  "title": "The Reformation",
+  "kind": "Religion",
+  "tags": [
+    "Protestant",
+    "16th century",
+    "Faith"
+  ],
+  "summary": "A monk's challenge to the Church splits Western Christendom and reshapes politics, culture, and belief across Europe.",
+  "pin": [
+    10.5,
+    51
+  ],
+  "yearStart": 1517,
+  "yearEnd": 1555,
+  "stories": [
+    {
+      "id": "luthers-revolt",
+      "title": "Luther's Revolt",
+      "summary": "From the 95 Theses to the Peace of Augsburg — the birth of Protestant Europe.",
+      "tags": [
+        "Luther",
+        "Protestant"
+      ],
+      "yearStart": 1517,
+      "yearEnd": 1555,
+      "map": {
+        "center": [
+          10.5,
+          51
+        ],
+        "zoom": 5.5
+      },
+      "events": [
+        {
+          "id": "95-theses",
+          "order": 1,
+          "type": "founding",
+          "year": 1517,
+          "dateLabel": "31 Oct 1517",
+          "title": "95 Theses",
+          "coords": [
+            12.65,
+            51.87
+          ],
+          "body": "Martin Luther nailed his Ninety-five Theses to the door of the Castle Church in Wittenberg, attacking the sale of indulgences. The document spread across Germany within weeks, igniting a debate the Church could not contain.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Ninety-five_Theses"
+        },
+        {
+          "id": "diet-of-worms",
+          "order": 2,
+          "type": "summit",
+          "year": 1521,
+          "dateLabel": "Apr 1521",
+          "title": "Diet of Worms",
+          "coords": [
+            8.43,
+            49.63
+          ],
+          "body": "Summoned before Emperor Charles V, Luther refused to recant: 'Here I stand, I can do no other.' The Edict of Worms declared him an outlaw, but princes who shared his views offered him protection.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Diet_of_Worms"
+        },
+        {
+          "id": "peasants-war",
+          "order": 3,
+          "type": "uprising",
+          "year": 1525,
+          "dateLabel": "1524 – 1525",
+          "title": "Peasants' War",
+          "coords": [
+            11.07,
+            51.29
+          ],
+          "body": "Inspired partly by Reformation rhetoric of spiritual equality, peasants across Swabia and Thuringia rose against feudal obligations. Luther condemned the revolt; princes crushed it at Frankenhausen with tens of thousands dead.",
+          "wikipedia": "https://en.wikipedia.org/wiki/German_Peasants%27_War"
+        },
+        {
+          "id": "augsburg-confession",
+          "order": 4,
+          "type": "treaty",
+          "year": 1530,
+          "dateLabel": "25 Jun 1530",
+          "title": "Augsburg Confession",
+          "coords": [
+            10.9,
+            48.37
+          ],
+          "body": "Presented to Charles V at the Diet of Augsburg, the Confession defined Lutheran doctrine in twenty-eight articles. It became the foundational statement of faith for Protestant churches across northern Europe.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Augsburg_Confession"
+        },
+        {
+          "id": "peace-of-augsburg",
+          "order": 5,
+          "type": "treaty",
+          "year": 1555,
+          "dateLabel": "Sep 1555",
+          "title": "Peace of Augsburg",
+          "coords": [
+            10.9,
+            48.37
+          ],
+          "body": "The Peace of Augsburg ended decades of religious war in the Empire with the formula cuius regio, eius religio — each prince would determine his territory's faith. Protestantism was now a permanent fact of European politics.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Peace_of_Augsburg"
+        }
+      ]
+    },
+    {
+      "id": "counter-reformation",
+      "title": "Counter-Reformation",
+      "summary": "The Catholic Church responds with reform, renewal, and the Council of Trent.",
+      "tags": [
+        "Catholic",
+        "Trent"
+      ],
+      "comingSoon": true,
+      "yearStart": 1545,
+      "yearEnd": 1648,
+      "events": []
+    }
+  ]
+}

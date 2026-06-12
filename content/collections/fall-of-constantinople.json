@@ -1,0 +1,123 @@
+{
+  "id": "fall-of-constantinople",
+  "epochId": "renaissance",
+  "title": "Fall of Constantinople",
+  "kind": "War",
+  "tags": [
+    "Byzantine",
+    "Ottoman",
+    "Siege"
+  ],
+  "summary": "The Ottoman siege that ended a thousand years of Byzantine rule and opened a new chapter in the struggle for the eastern Mediterranean.",
+  "pin": [
+    28.97,
+    41.01
+  ],
+  "yearStart": 1453,
+  "yearEnd": 1453,
+  "stories": [
+    {
+      "id": "siege-1453",
+      "title": "The Siege of 1453",
+      "summary": "Mehmed II's fifty-three-day assault on the last great Christian city of the East.",
+      "tags": [
+        "Siege",
+        "Byzantium"
+      ],
+      "yearStart": 1453,
+      "yearEnd": 1453,
+      "map": {
+        "center": [
+          28.97,
+          41.01
+        ],
+        "zoom": 11
+      },
+      "events": [
+        {
+          "id": "ottoman-blockade",
+          "order": 1,
+          "type": "siege",
+          "year": 1453,
+          "dateLabel": "6 Apr 1453",
+          "title": "Ottoman blockade",
+          "coords": [
+            28.97,
+            41.01
+          ],
+          "body": "Sultan Mehmed II encircled Constantinople with an army estimated at eighty thousand men. The Theodosian Walls had never fallen to a direct assault — but the Ottomans intended to break that record.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+        },
+        {
+          "id": "bombardment",
+          "order": 2,
+          "type": "bombing",
+          "year": 1453,
+          "dateLabel": "Apr – May 1453",
+          "title": "Bombardment",
+          "coords": [
+            28.94,
+            41
+          ],
+          "body": "Mehmed deployed massive bronze cannon — including the legendary Basilica — to batter the land walls day after day. Sections crumbled under the bombardment, forcing the defenders into constant repair.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Orban"
+        },
+        {
+          "id": "golden-horn-chain",
+          "order": 3,
+          "type": "naval",
+          "year": 1453,
+          "dateLabel": "22 Apr 1453",
+          "title": "Chain across Golden Horn",
+          "coords": [
+            28.97,
+            41.02
+          ],
+          "body": "A massive chain blocked the Golden Horn, keeping Ottoman galleys out of the harbour. Mehmed countered by hauling ships overland on greased rollers into the inlet — a manoeuvre that stunned the defenders.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Golden_Horn"
+        },
+        {
+          "id": "final-assault",
+          "order": 4,
+          "type": "battle",
+          "year": 1453,
+          "dateLabel": "29 May 1453",
+          "title": "Final assault",
+          "coords": [
+            28.96,
+            41.01
+          ],
+          "body": "After weeks of attrition, Mehmed launched a massive final assault before dawn. Janissaries and irregulars poured through a breach in the walls as Byzantine resistance finally collapsed.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+        },
+        {
+          "id": "fall-of-city",
+          "order": 5,
+          "type": "conquest",
+          "year": 1453,
+          "dateLabel": "29 May 1453",
+          "title": "Fall of the city",
+          "coords": [
+            28.98,
+            41.01
+          ],
+          "body": "Constantine XI died fighting at the walls. Hagia Sophia became a mosque, and the Byzantine Empire — heir to Rome — was extinguished. Istanbul would serve as the Ottoman capital for centuries.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Constantine_XI_Palaiologos"
+        }
+      ]
+    },
+    {
+      "id": "rise-of-ottomans",
+      "title": "Rise of the Ottomans",
+      "summary": "From a frontier beylik to a Mediterranean power.",
+      "tags": [
+        "Empire",
+        "Anatolia"
+      ],
+      "comingSoon": true,
+      "yearStart": 1299,
+      "yearEnd": 1453,
+      "events": []
+    }
+  ]
+}
