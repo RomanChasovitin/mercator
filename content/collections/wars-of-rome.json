@@ -1,0 +1,123 @@
+{
+  "id": "wars-of-rome",
+  "epochId": "antiquity",
+  "title": "Wars of Rome",
+  "kind": "War",
+  "tags": [
+    "Rome",
+    "Carthage",
+    "Republic"
+  ],
+  "summary": "The Roman Republic's great wars of survival and expansion — from Hannibal's invasion of Italy to Caesar's conquest of Gaul.",
+  "pin": [
+    12.5,
+    41.9
+  ],
+  "yearStart": -218,
+  "yearEnd": -50,
+  "stories": [
+    {
+      "id": "hannibals-war",
+      "title": "Hannibal's War",
+      "summary": "Hannibal Barca crosses the Alps and shatters Roman armies in Italy — until Scipio turns the war against Carthage itself.",
+      "tags": [
+        "Carthage",
+        "Invasion"
+      ],
+      "yearStart": -218,
+      "yearEnd": -202,
+      "map": {
+        "center": [
+          12,
+          42
+        ],
+        "zoom": 5
+      },
+      "events": [
+        {
+          "id": "saguntum",
+          "order": 1,
+          "type": "siege",
+          "year": -219,
+          "dateLabel": "219 BCE",
+          "title": "Siege of Saguntum",
+          "coords": [
+            -0.18,
+            39.2
+          ],
+          "body": "Hannibal besieged the allied city of Saguntum on the Spanish coast, ignoring Roman demands to withdraw. Its fall after eight months gave Rome the casus belli for the Second Punic War.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Siege_of_Saguntum"
+        },
+        {
+          "id": "crossing-the-alps",
+          "order": 2,
+          "type": "expedition",
+          "year": -218,
+          "dateLabel": "Oct 218 BCE",
+          "title": "Crossing the Alps",
+          "coords": [
+            7,
+            45.5
+          ],
+          "body": "Hannibal led an army of roughly 40,000 men — war elephants included — over the Alpine passes into Italy. The march cost him half his force but achieved total strategic surprise.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Hannibal%27s_crossing_of_the_Alps"
+        },
+        {
+          "id": "lake-trasimene",
+          "order": 3,
+          "type": "battle",
+          "year": -217,
+          "dateLabel": "Jun 217 BCE",
+          "title": "Battle of Lake Trasimene",
+          "coords": [
+            12.08,
+            43.07
+          ],
+          "body": "Hannibal ambushed the Roman consul Flaminius on the wooded shores of Lake Trasimene at dawn. In the fog and narrow terrain, 15,000 Romans were killed or captured in a few hours.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Lake_Trasimene"
+        },
+        {
+          "id": "cannae",
+          "order": 4,
+          "type": "battle",
+          "year": -216,
+          "dateLabel": "Aug 216 BCE",
+          "title": "Battle of Cannae",
+          "coords": [
+            16.15,
+            41.3
+          ],
+          "body": "Facing a Roman army twice his size, Hannibal deliberately weakened his centre and let it bend backward. The Roman legions pushed in — and his wings closed around them in a double envelopment that annihilated perhaps 50,000 men.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Cannae"
+        },
+        {
+          "id": "zama",
+          "order": 5,
+          "type": "battle",
+          "year": -202,
+          "dateLabel": "Oct 202 BCE",
+          "title": "Battle of Zama",
+          "coords": [
+            10.3,
+            36.5
+          ],
+          "body": "Scipio Africanus invaded North Africa and forced Hannibal to fight on Carthaginian soil. Roman cavalry drove off the Carthaginian horse, and Scipio's disciplined infantry broke Hannibal's veterans — ending the war.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Zama"
+        }
+      ]
+    },
+    {
+      "id": "caesar-in-gaul",
+      "title": "Caesar in Gaul",
+      "summary": "Julius Caesar conquers Gaul in eight years of campaigning — and crosses the Rubicon on his return.",
+      "tags": [
+        "Gaul",
+        "Conquest"
+      ],
+      "comingSoon": true,
+      "yearStart": -58,
+      "yearEnd": -50,
+      "events": []
+    }
+  ]
+}

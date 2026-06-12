@@ -1,0 +1,123 @@
+{
+  "id": "greco-persian-wars",
+  "epochId": "antiquity",
+  "title": "Greco-Persian Wars",
+  "kind": "War",
+  "tags": [
+    "Greece",
+    "Persia",
+    "Classical"
+  ],
+  "summary": "When the Achaemenid Empire marched on Greece, a handful of city-states held the line — from Marathon to the shores of Asia Minor.",
+  "pin": [
+    23,
+    38
+  ],
+  "yearStart": -499,
+  "yearEnd": -449,
+  "stories": [
+    {
+      "id": "persian-invasion",
+      "title": "The Persian Invasion",
+      "summary": "Darius and Xerxes send the largest army Greece had ever seen — and the Greeks answer at five decisive battles.",
+      "tags": [
+        "Invasion",
+        "Alliance"
+      ],
+      "yearStart": -490,
+      "yearEnd": -479,
+      "map": {
+        "center": [
+          24,
+          38.5
+        ],
+        "zoom": 6
+      },
+      "events": [
+        {
+          "id": "marathon",
+          "order": 1,
+          "type": "battle",
+          "year": -490,
+          "dateLabel": "Sep 490 BCE",
+          "title": "Battle of Marathon",
+          "coords": [
+            23.96,
+            38.12
+          ],
+          "body": "A Persian expeditionary force landed on the plain of Marathon, northeast of Athens. Outnumbered Athenian hoplites charged across the field and shattered the Persian line, preserving Greek independence in a single afternoon.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Marathon"
+        },
+        {
+          "id": "thermopylae",
+          "order": 2,
+          "type": "battle",
+          "year": -480,
+          "dateLabel": "Aug 480 BCE",
+          "title": "Battle of Thermopylae",
+          "coords": [
+            22.53,
+            38.8
+          ],
+          "body": "King Leonidas and a small Greek force held the narrow pass at Thermopylae for three days against Xerxes' vast army. They were finally outflanked and killed to the last man, but bought critical time for the rest of Greece to prepare.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Thermopylae"
+        },
+        {
+          "id": "salamis",
+          "order": 3,
+          "type": "naval",
+          "year": -480,
+          "dateLabel": "Sep 480 BCE",
+          "title": "Battle of Salamis",
+          "coords": [
+            23.57,
+            37.95
+          ],
+          "body": "The Greek fleet, led by Themistocles, lured the Persian navy into the narrow straits off Salamis. In cramped waters the lighter Greek triremes outmanoeuvred the larger Persian ships, destroying Xerxes' hope of a quick conquest.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Salamis"
+        },
+        {
+          "id": "plataea",
+          "order": 4,
+          "type": "battle",
+          "year": -479,
+          "dateLabel": "Aug 479 BCE",
+          "title": "Battle of Plataea",
+          "coords": [
+            23.32,
+            38.22
+          ],
+          "body": "A united Greek army under Pausanias confronted the Persian force still occupying Greece. After days of skirmishing, the hoplites broke through the Persian infantry and cavalry, ending the land invasion for good.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Plataea"
+        },
+        {
+          "id": "mycale",
+          "order": 5,
+          "type": "battle",
+          "year": -479,
+          "dateLabel": "Aug 479 BCE",
+          "title": "Battle of Mycale",
+          "coords": [
+            27.33,
+            37.7
+          ],
+          "body": "On the same day as Plataea, a Greek fleet landed on the coast of Ionia and routed the Persian army at Mycale. The victory encouraged the Ionian cities to revolt again and marked the end of Persian power in the Aegean.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Mycale"
+        }
+      ]
+    },
+    {
+      "id": "ionian-revolt",
+      "title": "Ionian Revolt",
+      "summary": "Greek cities in Asia Minor rise against Persian rule — and draw mainland Greece into the conflict.",
+      "tags": [
+        "Uprising",
+        "Asia Minor"
+      ],
+      "comingSoon": true,
+      "yearStart": -499,
+      "yearEnd": -493,
+      "events": []
+    }
+  ]
+}

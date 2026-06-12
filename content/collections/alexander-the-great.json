@@ -1,0 +1,123 @@
+{
+  "id": "alexander-the-great",
+  "epochId": "antiquity",
+  "title": "Alexander the Great",
+  "kind": "Conquest",
+  "tags": [
+    "Macedon",
+    "Persia",
+    "Empire"
+  ],
+  "summary": "In little over a decade, Alexander of Macedon shattered the Persian Empire and carried Greek culture to the edge of India.",
+  "pin": [
+    35,
+    33
+  ],
+  "yearStart": -336,
+  "yearEnd": -323,
+  "stories": [
+    {
+      "id": "conquest-of-persia",
+      "title": "Conquest of Persia",
+      "summary": "From the Granicus to the gates of Babylon, Alexander's army defeats every Persian force in its path.",
+      "tags": [
+        "Campaign",
+        "Empire"
+      ],
+      "yearStart": -334,
+      "yearEnd": -331,
+      "map": {
+        "center": [
+          38,
+          36
+        ],
+        "zoom": 5
+      },
+      "events": [
+        {
+          "id": "granicus",
+          "order": 1,
+          "type": "battle",
+          "year": -334,
+          "dateLabel": "May 334 BCE",
+          "title": "Battle of the Granicus",
+          "coords": [
+            27.23,
+            40.2
+          ],
+          "body": "Alexander crossed into Asia Minor and met a Persian satrap army on the banks of the Granicus River. A bold cavalry charge through the river broke the Persian line and opened the road into Anatolia.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_the_Granicus"
+        },
+        {
+          "id": "issus",
+          "order": 2,
+          "type": "battle",
+          "year": -333,
+          "dateLabel": "Nov 333 BCE",
+          "title": "Battle of Issus",
+          "coords": [
+            36.17,
+            36.75
+          ],
+          "body": "Darius III assembled a massive army and marched to intercept Alexander in Syria. Fighting in a narrow coastal plain, the Macedonian phalanx crushed the Persian centre while Alexander drove toward the king's chariot, forcing Darius to flee.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Issus"
+        },
+        {
+          "id": "siege-of-tyre",
+          "order": 3,
+          "type": "siege",
+          "year": -332,
+          "dateLabel": "Jan – Jul 332 BCE",
+          "title": "Siege of Tyre",
+          "coords": [
+            35.2,
+            33.27
+          ],
+          "body": "The island fortress of Tyre refused to surrender, so Alexander built a causeway across half a kilometre of sea and assaulted the walls with siege towers. After seven months the city fell, securing his control of the eastern Mediterranean.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Siege_of_Tyre_(332_BC)"
+        },
+        {
+          "id": "gaugamela",
+          "order": 4,
+          "type": "battle",
+          "year": -331,
+          "dateLabel": "Oct 331 BCE",
+          "title": "Battle of Gaugamela",
+          "coords": [
+            43.15,
+            36.35
+          ],
+          "body": "Darius gathered his last great army on the plain of Gaugamela in Mesopotamia. Alexander feigned a flank withdrawal, then punched through a gap in the Persian line and routed the entire force, leaving the empire defenceless.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Gaugamela"
+        },
+        {
+          "id": "babylon",
+          "order": 5,
+          "type": "conquest",
+          "year": -331,
+          "dateLabel": "Oct 331 BCE",
+          "title": "Entry into Babylon",
+          "coords": [
+            44.42,
+            32.54
+          ],
+          "body": "With Darius in flight, Babylon opened its gates to Alexander without a fight. The conqueror entered the ancient city in triumph and made it a capital of his new empire, adopting Persian court ceremony while claiming the mantle of the Great King.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Babylon"
+        }
+      ]
+    },
+    {
+      "id": "indian-campaign",
+      "title": "Indian Campaign",
+      "summary": "Alexander pushes east beyond Persia, crossing the Indus and fighting his last great battle on the Hydaspes.",
+      "tags": [
+        "India",
+        "Expedition"
+      ],
+      "comingSoon": true,
+      "yearStart": -327,
+      "yearEnd": -325,
+      "events": []
+    }
+  ]
+}
