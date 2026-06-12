@@ -5,7 +5,7 @@ import { MapProvider } from "@/components/atlas/MapProvider";
 
 export function MapCanvas({ children }: { children: React.ReactNode }) {
   return (
-    <div className="fixed inset-0 overflow-hidden">
+    <div className="fixed inset-0 h-dvh w-dvw overflow-hidden">
       <MapProvider>{children}</MapProvider>
     </div>
   );

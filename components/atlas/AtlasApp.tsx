@@ -14,10 +14,12 @@ export function AtlasApp({ stories }: { stories: Story[] }) {
       <MapCanvas>
         <MapMenuAndStory stories={stories} atlas={atlas} />
       </MapCanvas>
-      <div className="pointer-events-none absolute left-6 top-5 z-10">
-        <div className="font-display text-3xl">Mercator</div>
-        <div className="text-sm text-muted-foreground">An interactive atlas of epochs</div>
-      </div>
+      {atlas.state.mode === "menu" && (
+        <div className="pointer-events-none absolute left-6 top-5 z-10">
+          <div className="font-display text-3xl">Mercator</div>
+          <div className="text-sm text-muted-foreground">An interactive atlas of epochs</div>
+        </div>
+      )}
     </main>
   );
 }

@@ -14,17 +14,17 @@ export function MapMenuAndStory({
   stories: Story[];
   atlas: ReturnType<typeof useAtlas>;
 }) {
-  const { map } = useMap();
+  const { map, ready } = useMap();
   const { state, openStory, selectEvent, clearEvent, closeStory } = atlas;
   const story = state.mode === "story" ? stories.find((s) => s.id === state.storyId) : undefined;
 
   useEffect(() => {
-    if (!map || state.mode !== "menu") return;
+    if (!map || !ready || state.mode !== "menu") return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const opts = { center: WORLD_VIEW.center, zoom: WORLD_VIEW.zoom };
     if (reduced) map.jumpTo(opts);
     else map.flyTo({ ...opts, duration: 1200 });
-  }, [map, state.mode]);
+  }, [map, ready, state.mode]);
 
   if (story) {
     return (

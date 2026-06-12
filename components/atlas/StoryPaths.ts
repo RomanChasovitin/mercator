@@ -5,6 +5,7 @@ import type { Story } from "@/lib/content/schema";
 const SOURCE_ID = "story-paths";
 
 export function setStoryPaths(map: maplibregl.Map, story: Story, activeEventId: string | null) {
+  if (!map.isStyleLoaded()) return;
   const data = buildPathFeatures(story, activeEventId);
   const existing = map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
   if (existing) {

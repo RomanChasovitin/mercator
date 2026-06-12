@@ -13,12 +13,12 @@ export function StoryPins({
   stories: Story[];
   onEnter: (storyId: string) => void;
 }) {
-  const { map } = useMap();
+  const { map, ready } = useMap();
   const [expanded, setExpanded] = useState<string | null>(null);
   const markersRef = useRef<maplibregl.Marker[]>([]);
 
   useEffect(() => {
-    if (!map) return;
+    if (!map || !ready) return;
     const markers = stories.map((story) => {
       const el = document.createElement("button");
       el.className =
@@ -37,7 +37,7 @@ export function StoryPins({
       markers.forEach((m) => m.remove());
       map.off("click", collapse);
     };
-  }, [map, stories]);
+  }, [map, ready, stories]);
 
   const active = stories.find((s) => s.id === expanded);
   if (!map || !active) return null;

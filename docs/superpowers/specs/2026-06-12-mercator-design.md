@@ -1,345 +1,161 @@
-# Mercator — Design Spec
+# Mercator — Design Spec (MVP)
 
 - **Date:** 2026-06-12
 - **Status:** Draft for review
-- **Languages:** Русский (Part 1) · English (Part 2) — both parts are equivalent.
+- **Language:** English (per `CLAUDE.md`, in-repo technical docs are English-only).
 
-> Bilingual document. Part 1 is the authoritative Russian version used during
-> brainstorming. Part 2 is the English translation. Keep both in sync on edits.
-
----
-
-# Part 1 — Русская версия
-
-## 1. Концепт
-
-**Mercator — интерактивный исторический атлас эпох.** История нарезана на
-**периоды**; внутри периодов — нарративные **сюжеты**; каждый сюжет проживается на
-карте через **события** и кинематографический режим **autoplay**.
-
-Главный отрыв от конкурентов (GeaCron, Running Reality, OpenHistoricalMap) —
-**премиальный UX и атмосферная карта** там, где у них «голый GIS», мёртвый проект
-или академическая сухость. Аудитория — фанаты истории / CK / Civ, платёжеспособная
-и большая.
-
-**Приоритет проекта:** скорость до работающего демо в проде. Глубину, бэкенд и
-«магию» наслаиваем итерациями.
-
-## 2. Модель контента (3 уровня)
-
-| Уровень | Что это | Роль |
-|--------|---------|------|
-| **Период** | Широкая эра (Античность, Средневековье, Новое время) | Группирующая витрина на главной |
-| **Сюжет** | Нарративная арка внутри периода («Завоевания Александра») | Единица контента: карта + события + autoplay. = один ручной датасет |
-| **Событие** | Точка на карте внутри сюжета («Битва при Гавгамелах») | Раскрывающаяся интерактивная секция с информацией |
-
-Карта и autoplay живут на уровне **сюжета**. Период — это навигационная обёртка.
-Ручной датасет, который собирает мейнтейнер, = один сюжет.
-
-## 3. Информационная архитектура (экраны)
-
-1. **Главная** (`/`) — витрина периодов карточками.
-2. **Страница периода** (`/[period]`) — герой периода + витрина его сюжетов (глав).
-3. **Страница сюжета** (`/[period]/[story]`) — ядро приложения (см. §4).
-
-Каждый экран — статическая страница Next.js (SSG). Побочный бонус: бесплатное
-programmatic-SEO (страницы вида «карта завоеваний Александра») без бэкенда.
-
-## 4. Ядро — страница сюжета
-
-Полноэкранная стилизованная карта + панель события + лента autoplay.
-
-**Карта.** MapLibre GL с кастомным стилем (см. §6). События — маркеры на карте.
-Для P1 — HTML-маркеры (проще стилизовать и анимировать; событий ~10–20 на сюжет).
-Линия-маршрут (пунктир, золото) соединяет события по порядку.
-
-**Состояния маркеров:** прошлые (приглушённые) · активное (свечение) · будущие
-(едва видимые в autoplay; в свободном просмотре — обычные).
-
-**Панель события.** Клик по маркеру → панель справа (desktop) или нижний шит
-(mobile) на базе shadcn `Sheet`/`Drawer`. Карта плавно летит к событию (`flyTo`).
-Содержимое панели: дата · заголовок · изображение · текст (2–4 абзаца) · источники ·
-ссылки · задел под кнопку «Спросить ИИ» (функция — P2).
-
-**Два режима:**
-- **Свободный просмотр** — все события видны, кликаешь любое, читаешь.
-- **Autoplay (тур)** — камера по очереди облетает события: `flyTo` → маркер
-  проявляется → панель раскрывает контент → пауза N секунд → рисуется сегмент
-  маршрута → следующее. История разворачивается постепенно.
-
-**Лента снизу = autoplay-контролы + мини-таймлайн сюжета:** play/pause · шаг
-вперёд/назад · скорость (1× / 1.5× / 2×) · скраб с маркерами событий (клик =
-переход) · подпись диапазона лет.
-
-**Доступность:** при `prefers-reduced-motion` переходы мгновенные, без полётов.
-
-## 5. Модель данных (статика, без бэкенда)
-
-Каждый сюжет и период — типизированный JSON в репозитории; изображения в `/public`.
-Схемы валидируются `zod` на сборке.
-
-```ts
-type Period = {
-  id: string;                 // "antiquity"
-  title: string;              // "Античность"
-  yearsLabel: string;         // "800 до н.э. – 500 н.э."
-  yearStart: number;          // -800  (до н.э. = отрицательные)
-  yearEnd: number;            // 500
-  description: string;
-  cover: string;              // путь к изображению
-  storyIds: string[];
-};
-
-type Story = {
-  id: string;                 // "alexander"
-  periodId: string;           // "antiquity"
-  title: string;              // "Завоевания Александра"
-  yearsLabel: string;
-  yearStart: number;
-  yearEnd: number;
-  summary: string;
-  cover: string;
-  map: { center: [number, number]; zoom: number };  // начальный вид
-  events: Event[];
-  route?: [number, number][]; // опц.: явная линия; иначе строится по событиям
-};
-
-type Event = {
-  id: string;
-  order: number;              // порядок в autoplay
-  year: number;              // числовой ключ сортировки (BC = отрицательный)
-  dateLabel: string;          // "331 до н.э."
-  title: string;
-  coords: [number, number];   // [lng, lat]
-  summary: string;            // короткое (для пика на карте)
-  body: string;               // markdown, 2–4 абзаца
-  image?: string;
-  sources?: string[];
-  links?: { label: string; url: string }[];
-};
-```
-
-Раскладка: `content/periods/*.json`, `content/stories/*.json`, картинки в
-`public/stories/<storyId>/`. Next.js на сборке читает JSON и генерит маршруты через
-`generateStaticParams`.
-
-## 6. Арт-дирекшн — «Кодекс» (как тема shadcn)
-
-Выбран ключ **A · Кодекс**: тёмно-золотой, серифные заголовки, премиально-эпично.
-Реализуется как **тема токенов shadcn** (CSS-переменные) + кастомный стиль карты —
-без бэкенда и без тяжёлого кода.
-
-**Токены (ориентир, точные значения тюнингуем в реализации):**
-
-| Токен | Значение | Назначение |
-|-------|----------|-----------|
-| `--background` | `#0d0b07` | тёплый почти-чёрный фон |
-| `--foreground` | `#e9dcc3` | пергаментный текст |
-| `--card` | `#14110b` | поверхности карточек/панелей |
-| `--primary` | `#e8c074` → `#c9952f` | золото (кнопки, активные акценты) |
-| `--primary-foreground` | `#160f02` | текст на золоте |
-| `--muted-foreground` | `#9a886a` | вторичный текст |
-| `--border` | `#2a2114` | бордеры |
-| `--radius` | `~10px` | скругление |
-
-**Шрифты:** серифный дисплейный для заголовков (напр. EB Garamond / Cormorant,
-fallback Georgia); системный/Inter для контролов и UI.
-
-**Стиль карты (MapLibre):** тёмная сине-зелёная суша/вода, приглушённо, минимум
-подписей; золотые акценты для событий и маршрута. Базовый слой для P1 — открытый
-векторный basemap, перекрашенный под «Кодекс» (точный источник — §11).
-
-## 7. Технологический стек (P1)
-
-- **Next.js (App Router) + TypeScript**, полностью статично (SSG).
-- **Tailwind CSS + shadcn/ui** (Sheet/Drawer, Button, Card, Badge, Slider, Tooltip,
-  Dialog). Композим существующие компоненты перед написанием своих.
-- **MapLibre GL JS** для карты (кастомный стиль).
-- **zod** — схемы и валидация контента на сборке.
-- Лёгкий стор для движка autoplay (React state или Zustand — на усмотрение).
-- Деплой: Vercel (или Cloudflare Pages).
-- Весь код, комментарии и техдокументация — на английском (см. `CLAUDE.md`).
-
-## 8. Скоуп P1 (что реально шипим)
-
-**В P1:**
-- Одно статическое Next.js-приложение, без БД/API.
-- 1 период + 1–2 полностью собранных сюжета (напр. Античность → Завоевания
-  Александра, 10–14 событий).
-- 3 экрана: Главная / Период / Сюжет.
-- Карта (MapLibre, стиль «Кодекс») + маркеры событий + панель события + autoplay +
-  скраб-таймлайн.
-- Базовая адаптивность (на мобиле панель → нижний шит).
-- Тема shadcn «Кодекс».
-- Деплой в прод (Vercel).
-
-**Явно НЕ в P1:** PostGIS/API · пайплайн векторных тайлов (PMTiles/tippecanoe) ·
-границы и великие державы как слой · RAG «Спросить ИИ» · торговые пути/миграции ·
-аккаунты · монетизация/B2B/embed · programmatic-SEO «в масштабе».
-
-## 9. Роадмап (P2+)
-
-- **P2 — данные и бэкбон:** PostGIS как source of truth; перенос контента из
-  статики; API; начало пайплайна тайлов.
-- **P3 — карта вглубь:** великие державы и их temporal-границы как слой; торговые
-  пути и миграции; «размытые» границы для древних эпох.
-- **P4 — магия:** RAG-компаньон «Спросить ИИ» (pgvector + Wikipedia/Wikidata);
-  «кликни в точку в году X — получи рассказ».
-- **P5 — продукт:** аккаунты; монетизация (pro-подписка, B2B для образования,
-  embed-виджеты); programmatic-SEO в масштабе.
-
-## 10. Критерии успеха P1
-
-- Одна опубликованная ссылка в проде (Vercel).
-- Минимум один полностью собранный сюжет, проходимый из конца в конец: свободный
-  просмотр **и** autoplay.
-- Навигация Главная → Период → Сюжет работает на SSG.
-- Визуально ощущается премиально (Кодекс), не «дженерик».
-- Адаптивно (desktop + базовый mobile).
-
-## 11. Открытые решения (отложены на реализацию)
-
-- Точный источник базового слоя карты (OpenFreeMap / MapTiler / самохост Natural
-  Earth) и финальный стиль MapLibre.
-- Маркеры событий: HTML-маркеры (дефолт P1) vs GeoJSON-слой (если потребуется
-  производительность).
-- Глубина текста события: коротко на карте vs статья (дефолт — средне: 2–4 абзаца +
-  изображение + источники).
-- Конкретный серифный шрифт.
-- Глубина мобильного autoplay.
-
-## 12. Тестирование (легко, под P1)
-
-- `zod`-валидация всех JSON контента на сборке (+ тест, падающий на битом датасете).
-- Юнит-тесты движка autoplay: порядок событий, шаг вперёд/назад, сортировка по
-  `year` с учётом BC (отрицательные).
-- Компонентные тесты: панель события, скраб-таймлайн.
-- Ручной QA визуала и поведения карты.
+> This spec supersedes the earlier 3-route (Home / Period / Story) draft. The MVP is
+> a single interactive map screen. Product discussion with the maintainer happens in
+> Russian; the committed spec stays in English.
 
 ---
-
-# Part 2 — English version
 
 ## 1. Concept
 
-**Mercator is an interactive historical atlas of epochs.** History is split into
-**periods**; inside periods live narrative **stories**; each story is experienced on
-a map through **events** and a cinematic **autoplay** mode.
+**Mercator is an interactive historical atlas.** History is told through **stories**
+(narrative chapters of an epoch); each story is a set of ordered **events** drawn on
+a stylized world map.
 
-The key edge over competitors (GeaCron, Running Reality, OpenHistoricalMap) is
-**premium UX and an atmospheric map**, where they offer raw GIS, a dead project, or
-academic dryness. The audience — history / CK / Civ fans — is large and willing to
-pay.
+The MVP lives on **one screen**: a single world map. Stories are pinned on it
+geographically. Click a pin, the story expands into a card; "Enter" applies the
+story and the map fills with its events (numbered pins + dashed voyage/campaign
+paths). Click an event to read it. Close the story to return to the map of stories.
 
-**Project priority:** speed to a working demo in production. Depth, backend, and the
-"magic" are layered in iteratively.
+The edge over competitors (GeaCron, Running Reality, OpenHistoricalMap) is **premium
+UX and an atmospheric map** where they offer raw GIS or academic dryness.
 
-## 2. Content model (3 levels)
+**Project priority:** speed to a working, deployed demo. Depth and "magic" are
+layered in later.
 
-| Level | What it is | Role |
-|-------|------------|------|
-| **Period** | A broad era (Antiquity, Middle Ages, Early Modern) | Grouping showcase on the home page |
-| **Story** | A narrative arc inside a period ("Alexander's Conquests") | Content unit: map + events + autoplay. = one hand-curated dataset |
-| **Event** | A point on the map inside a story ("Battle of Gaugamela") | An expandable interactive section with information |
+## 2. MVP scope
 
-Map and autoplay live at the **story** level. A period is a navigational wrapper.
-The hand-curated dataset the maintainer builds equals one story.
+**In scope:**
+- One static Next.js app, no DB/API.
+- A **single route** (`/`) with two modes on one persistent map: **Menu** and **Story**.
+- **2 fully curated stories**, **5 events each**, spanning two epochs:
+  - **Age of Discovery** (15–16th c.)
+  - **World War II in Europe** (20th c.)
+- Each event is a point pin; events optionally carry a **path** drawn as a dashed
+  gold arc (used for all MVP events — they are voyages/campaigns).
+- Event info panel (shadcn `Sheet`: right panel on desktop, bottom drawer on mobile).
+- "Codex" dark-gold shadcn theme + recolored MapLibre map style.
+- Basic responsiveness.
+- Deploy to production (Vercel).
 
-## 3. Information architecture (screens)
+**Explicitly NOT in MVP:**
+- Cinematic **autoplay** tour (deferred — manual navigation only).
+- The `Period` level and `Home`/`Period`/`Story` routes (dropped).
+- PostGIS/API · vector tile pipeline · borders/great-powers layer · RAG "Ask AI" ·
+  accounts · monetization · programmatic SEO "at scale".
 
-1. **Home** (`/`) — showcase of periods as cards.
-2. **Period page** (`/[period]`) — period hero + showcase of its stories (chapters).
-3. **Story page** (`/[period]/[story]`) — the core of the app (see §4).
+## 3. Navigation & app structure
 
-Every screen is a static Next.js page (SSG). Side benefit: free programmatic SEO
-(pages like "map of Alexander's conquests") with no backend.
+Single route `/`. The app is a client-side state machine over one persistent map
+instance. No full-page navigation between modes — the map is never torn down.
 
-## 4. Core — the story page
+```mermaid
+stateDiagram-v2
+    [*] --> Menu
+    Menu --> Story : click pin, expand card, Enter
+    Story --> Menu : Close (X or browser Back)
+    Menu : Menu mode\nworld view + story pins
+    Story : Story mode\nevent pins + paths + info panel
+```
 
-A full-screen stylized map + an event panel + an autoplay bar.
+- The applied story is reflected in the URL as a **shallow query param**
+  (`/?story=age-of-discovery`). This makes a story shareable and lets the browser
+  **Back** button close the story. Reloading a deep link opens directly in Story mode.
+- Selecting an event may also be reflected (`/?story=...&event=cortes`) so a specific
+  event is linkable; this is a nice-to-have, not required for MVP.
 
-**Map.** MapLibre GL with a custom style (see §6). Events are markers on the map.
-For P1, HTML markers (easier to style and animate; ~10–20 events per story). A route
-line (dashed, gold) connects events in order.
+## 4. Menu screen (Menu mode)
 
-**Marker states:** past (dimmed) · active (glowing) · future (barely visible during
-autoplay; normal during free browsing).
+A full-screen world map in the "Codex" style.
 
-**Event panel.** Clicking a marker opens a right-side panel (desktop) or a bottom
-sheet (mobile) built on shadcn `Sheet`/`Drawer`. The map flies to the event
-(`flyTo`). Panel content: date · title · image · text (2–4 paragraphs) · sources ·
-links · a placeholder for an "Ask AI" button (the feature itself is P2).
+- **Story pins** are placed at a representative geographic location (`Story.pin`).
+  Collapsed state = a glowing gold dot with a small label.
+- **Click a pin → the card expands in place** (anchored to the pin): cover image,
+  epoch badge, title, 1–2 line summary, an "N events · year range" line, and an
+  **Enter →** button.
+- Clicking **Enter** applies the story (transition to Story mode).
+- A lightweight app title/wordmark sits in a corner overlay.
 
-**Two modes:**
-- **Free browsing** — all events visible; click any to read.
-- **Autoplay (tour)** — the camera visits events one by one: `flyTo` → marker
-  appears → panel reveals content → dwell N seconds → route segment is drawn → next.
-  The story unfolds progressively.
+## 5. Story screen (Story mode)
 
-**Bottom bar = autoplay controls + a story mini-timeline:** play/pause · step
-forward/back · speed (1× / 1.5× / 2×) · a scrubber with event markers (click to
-jump) · a year-range label.
+The same map, re-themed to the story.
 
-**Accessibility:** with `prefers-reduced-motion`, transitions are instant, no
-fly-overs.
+- **Map fit:** on apply, `flyTo` the story's configured view and fit to its events'
+  bounds. On close, `flyTo` back to the world view.
+- **Event pins:** numbered `1..5` markers in event order. States: default ·
+  active/selected (glowing, enlarged).
+- **Paths:** each event's `path` is drawn as a **dashed gold arc** (GeoJSON line
+  layer). The active event's path is emphasized; others are dimmed.
+- **No inter-event connector line** for anthology stories (independent voyages):
+  the per-event paths and numbered order carry the sequence. (A single continuous
+  journey could instead use one connector; not needed for the two MVP stories.)
+- **Event info panel:** clicking a pin (or a sequence chip) opens a shadcn `Sheet` —
+  right panel on desktop, bottom drawer on mobile — with date · title · image ·
+  body (markdown, 2–4 paragraphs) · sources.
+- **Sequence strip** (bottom): chips `1..5`; click to jump to an event. Manual only,
+  no autoplay.
+- **Close (✕)** in a corner returns to Menu mode (also triggered by browser Back).
+- **Accessibility:** with `prefers-reduced-motion`, map transitions are instant
+  (no fly-overs).
 
-## 5. Data model (static, no backend)
+## 6. Data model (static, no backend)
 
-Each story and period is typed JSON in the repo; images live in `/public`. Schemas
-are validated with `zod` at build time.
+Each story is typed JSON in the repo; images live in `/public`. Schemas validated
+with `zod` at build time. There is **no `Period` entity**; `epoch` is a label on the
+story.
 
 ```ts
-type Period = {
-  id: string;                 // "antiquity"
-  title: string;              // "Antiquity"
-  yearsLabel: string;         // "800 BCE – 500 CE"
-  yearStart: number;          // -800  (BCE = negative)
-  yearEnd: number;            // 500
-  description: string;
-  cover: string;              // image path
-  storyIds: string[];
+type Event = {
+  id: string;                 // "cortes"
+  order: number;              // 1..N sequence within the story
+  year: number;               // numeric sort key (BCE = negative)
+  dateLabel: string;          // "1519–1521"
+  title: string;
+  coords: [number, number];   // [lng, lat] — pin, label, click target (required)
+  path?: [number, number][];  // optional voyage/campaign arc (drawn dashed gold)
+  summary: string;            // short, for the on-map peek
+  body: string;               // markdown, 2–4 paragraphs
+  image?: string;
+  sources?: { label: string; url: string }[];
 };
 
 type Story = {
-  id: string;                 // "alexander"
-  periodId: string;           // "antiquity"
-  title: string;              // "Alexander's Conquests"
-  yearsLabel: string;
-  yearStart: number;
-  yearEnd: number;
+  id: string;                 // "age-of-discovery"
+  epoch: string;              // label only, e.g. "15–16th c."
+  title: string;              // "Age of Discovery"
   summary: string;
-  cover: string;
-  map: { center: [number, number]; zoom: number };  // initial view
-  events: Event[];
-  route?: [number, number][]; // optional explicit line; else built from events
-};
-
-type Event = {
-  id: string;
-  order: number;              // autoplay order
-  year: number;              // numeric sort key (BCE = negative)
-  dateLabel: string;          // "331 BCE"
-  title: string;
-  coords: [number, number];   // [lng, lat]
-  summary: string;            // short (for the on-map peek)
-  body: string;               // markdown, 2–4 paragraphs
-  image?: string;
-  sources?: string[];
-  links?: { label: string; url: string }[];
+  cover: string;              // image path
+  pin: [number, number];      // story location on the menu map [lng, lat]
+  yearStart: number;          // for the range label
+  yearEnd: number;
+  map: { center: [number, number]; zoom: number }; // view when applied
+  events: Event[];            // exactly 5 for MVP
 };
 ```
 
-Layout: `content/periods/*.json`, `content/stories/*.json`, images in
-`public/stories/<storyId>/`. At build, Next.js reads the JSON and generates routes
-via `generateStaticParams`.
+Layout: `content/stories/*.json`, images in `public/stories/<storyId>/`. At build,
+Next.js reads the JSON and validates it with `zod`.
 
-## 6. Art direction — "Codex" (as a shadcn theme)
+## 7. Map & rendering
 
-Chosen key **A · Codex**: dark-and-gold, serif headings, premium and epic.
-Implemented as a **shadcn token theme** (CSS variables) + a custom map style — no
-backend, no heavy code.
+- One **MapLibre GL JS** instance, custom "Codex" style (§8). The instance persists
+  across Menu/Story modes.
+- **Story pins (menu) and event pins (story) → HTML markers** (`maplibregl.Marker`):
+  only ~2 and ~5 of them, easy to style and animate.
+- **Voyage/campaign paths → GeoJSON line layers**: a single `LineString` source per
+  story, added when the story is applied and removed on close; dashed gold paint,
+  active path emphasized.
+- **Transitions:** `flyTo` / `fitBounds` on apply and close; instant under
+  `prefers-reduced-motion`.
 
-**Tokens (reference; exact values tuned in implementation):**
+## 8. Art direction — "Codex"
+
+Dark-and-gold, serif headings, premium and epic. Implemented as a **shadcn token
+theme** (CSS variables) + a recolored MapLibre style.
 
 | Token | Value | Purpose |
 |-------|-------|---------|
@@ -355,75 +171,66 @@ backend, no heavy code.
 **Fonts:** a serif display for headings (e.g. EB Garamond / Cormorant, fallback
 Georgia); a system/Inter sans for controls and UI.
 
-**Map style (MapLibre):** dark teal-navy land/water, muted, minimal labels; gold
-accents for events and route. The P1 basemap is an open vector basemap recolored to
-"Codex" (exact source — §11).
+**Map style:** dark teal-navy land/water, muted, minimal labels; gold accents for
+event pins and paths. The basemap is an open vector basemap recolored to "Codex"
+(exact source — §12).
 
-## 7. Tech stack (P1)
+## 9. Tech stack
 
-- **Next.js (App Router) + TypeScript**, fully static (SSG).
-- **Tailwind CSS + shadcn/ui** (Sheet/Drawer, Button, Card, Badge, Slider, Tooltip,
-  Dialog). Compose existing components before writing new ones.
+- **Next.js (App Router) + TypeScript**, fully static (SSG); single client route.
+- **Tailwind CSS + shadcn/ui** (Sheet/Drawer, Button, Card, Badge, Tooltip). Compose
+  existing components before writing new ones.
 - **MapLibre GL JS** for the map (custom style).
 - **zod** — content schemas and build-time validation.
-- A light store for the autoplay engine (React state or Zustand — implementer's
-  choice).
+- Lightweight **React state/context** for the Menu↔Story machine (no Zustand needed
+  at this size).
 - Deploy: Vercel (or Cloudflare Pages).
-- All code, comments, and technical documentation in English (see `CLAUDE.md`).
+- All code, comments, and technical docs in English (see `CLAUDE.md`).
 
-## 8. P1 scope (what we actually ship)
+## 10. MVP content
 
-**In P1:**
-- One static Next.js app, no DB/API.
-- 1 period + 1–2 fully curated stories (e.g. Antiquity → Alexander's Conquests,
-  10–14 events).
-- 3 screens: Home / Period / Story.
-- Map (MapLibre, "Codex" style) + event markers + event panel + autoplay + scrubber
-  timeline.
-- Basic responsiveness (on mobile the panel becomes a bottom sheet).
-- shadcn "Codex" theme.
-- Deploy to production (Vercel).
+### Story 1 — Age of Discovery (15–16th c.)
 
-**Explicitly NOT in P1:** PostGIS/API · vector tile pipeline (PMTiles/tippecanoe) ·
-borders and great powers as a layer · RAG "Ask AI" · trade routes/migrations ·
-accounts · monetization/B2B/embed · programmatic SEO "at scale".
+`pin`: western Iberia / eastern Atlantic. Events (each drawn as a path):
 
-## 9. Roadmap (P2+)
+1. **1492 — Columbus reaches the Americas.** Palos → Canaries → Bahamas/Caribbean.
+2. **1498 — Vasco da Gama reaches India.** Lisbon → around Africa → Calicut.
+3. **1519–1521 — Cortés and the fall of Tenochtitlan.** Veracruz → Tenochtitlan
+   (conquest march).
+4. **1519–1522 — Magellan–Elcano circumnavigation.** First voyage around the globe.
+5. **1532 — Pizarro and the conquest of Peru.** Coast → Cajamarca → Cusco.
 
-- **P2 — data & backbone:** PostGIS as the source of truth; migrate content off
-  static files; API; start the tile pipeline.
-- **P3 — deeper map:** great powers and their temporal borders as a layer; trade
-  routes and migrations; "fuzzy" borders for ancient eras.
-- **P4 — magic:** the "Ask AI" RAG companion (pgvector + Wikipedia/Wikidata); "click
-  a point in year X, get a narrative".
-- **P5 — product:** accounts; monetization (pro subscription, education B2B, embed
-  widgets); programmatic SEO at scale.
+### Story 2 — World War II in Europe (20th c.)
 
-## 10. P1 success criteria
+`pin`: central Europe. Events (each drawn as a directional path/arrow):
 
-- One published URL in production (Vercel).
-- At least one fully curated story, playable end to end: free browsing **and**
-  autoplay.
-- Home → Period → Story navigation works on SSG.
+1. **1939 — Invasion of Poland.** Germany → Poland.
+2. **1940 — Fall of France.** Through the Ardennes → Paris.
+3. **1941 — Operation Barbarossa.** Eastern front advance into the USSR.
+4. **1944 — D-Day landings.** Across the Channel → Normandy.
+5. **1945 — Fall of Berlin.** Final Allied/Soviet advance → Berlin.
+
+## 11. Success criteria
+
+- One published URL in production.
+- Both stories playable end to end via manual navigation: open from the menu, read
+  all 5 events, close back to the menu.
+- Menu ↔ Story mode (with URL deep-link + Back-to-close) works.
 - Visually feels premium ("Codex"), not generic.
-- Responsive (desktop + basic mobile).
+- Responsive (desktop + basic mobile, panel → bottom sheet).
 
-## 11. Open decisions (deferred to implementation)
+## 12. Open decisions (deferred to implementation)
 
-- The exact map basemap source (OpenFreeMap / MapTiler / self-hosted Natural Earth)
-  and the final MapLibre style.
-- Event markers: HTML markers (P1 default) vs a GeoJSON layer (if performance
-  requires).
-- Event text depth: short on-map vs article (default — medium: 2–4 paragraphs +
-  image + sources).
+- Exact map basemap source (OpenFreeMap / MapTiler / self-hosted) and final MapLibre
+  style.
+- Whether to reflect the selected event in the URL (`&event=`) — nice-to-have.
 - The specific serif font.
-- Mobile autoplay depth.
+- Path fidelity: approximate few-waypoint arcs vs. more detailed routes.
 
-## 12. Testing (light, suited to P1)
+## 13. Testing (light, suited to MVP)
 
 - `zod` validation of all content JSON at build (+ a test that fails on a broken
-  dataset).
-- Unit tests for the autoplay engine: event ordering, step forward/back, sorting by
-  `year` including BCE (negatives).
-- Component tests: the event panel, the scrubber timeline.
-- Manual QA of map visuals and behavior.
+  dataset, e.g. wrong event count or missing `coords`).
+- Unit tests for story/event helpers: ordering by `order`, year sorting.
+- Component tests: the event panel and the sequence strip (jump-to-event).
+- Manual QA of map visuals, transitions, and the Menu↔Story flow.
