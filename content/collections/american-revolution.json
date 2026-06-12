@@ -1,0 +1,30 @@
+{
+  "id": "american-revolution",
+  "epochId": "enlightenment",
+  "title": "American Revolution",
+  "kind": "War",
+  "tags": ["Colonies", "Independence", "Atlantic"],
+  "summary": "Thirteen colonies on the eastern seaboard broke from the British Empire and forged a republic that would reshape the modern world.",
+  "pin": [-75.0, 40.0],
+  "yearStart": 1775,
+  "yearEnd": 1783,
+  "stories": [
+    {
+      "id": "war-of-independence",
+      "title": "War of Independence",
+      "summary": "From the first shots at Lexington to the surrender at Yorktown, the colonies fought for self-rule.",
+      "tags": ["Continental Army", "Patriots"],
+      "yearStart": 1775,
+      "yearEnd": 1781,
+      "map": { "center": [-75.5, 41.0], "zoom": 5 },
+      "events": [
+        { "id": "lexington-concord", "order": 1, "type": "battle", "year": 1775, "dateLabel": "19 Apr 1775", "title": "Lexington & Concord", "coords": [-71.23, 42.47], "body": "British regulars marched to seize colonial arms at Concord. Militia at Lexington and along the road back to Boston fired the opening shots of the war.", "wikipedia": "https://en.wikipedia.org/wiki/Battles_of_Lexington_and_Concord" },
+        { "id": "bunker-hill", "order": 2, "type": "battle", "year": 1775, "dateLabel": "17 Jun 1775", "title": "Bunker Hill", "coords": [-71.06, 42.37], "body": "Rebel militia fortified Breed's Hill above Boston. British assaults finally took the position, but at a cost that showed the colonies could stand against the Crown.", "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Bunker_Hill" },
+        { "id": "saratoga", "order": 3, "type": "battle", "year": 1777, "dateLabel": "Sep–Oct 1777", "title": "Saratoga", "coords": [-73.58, 43.0], "body": "Horatio Gates trapped and defeated a British army under Burgoyne in upstate New York. The victory persuaded France to enter the war on the American side.", "wikipedia": "https://en.wikipedia.org/wiki/Battles_of_Saratoga" },
+        { "id": "valley-forge", "order": 4, "type": "founding", "year": 1777, "dateLabel": "Dec 1777 – Jun 1778", "title": "Valley Forge", "coords": [-75.44, 40.1], "body": "Washington's army endured a brutal winter encampment. Drill under von Steuben and renewed supply transformed a ragged force into a professional army.", "wikipedia": "https://en.wikipedia.org/wiki/Valley_Forge" },
+        { "id": "yorktown", "order": 5, "type": "siege", "year": 1781, "dateLabel": "Sep–Oct 1781", "title": "Yorktown", "coords": [-76.51, 37.24], "body": "French and American forces besieged Cornwallis on the Virginia peninsula. His surrender effectively ended major fighting and secured independence.", "wikipedia": "https://en.wikipedia.org/wiki/Siege_of_Yorktown" }
+      ]
+    },
+    { "id": "road-to-revolution", "title": "Road to Revolution", "summary": "Taxation, protest, and the crisis of empire before the first shots.", "tags": ["Stamp Act", "Boston"], "comingSoon": true, "yearStart": 1763, "yearEnd": 1775, "events": [] }
+  ]
+}

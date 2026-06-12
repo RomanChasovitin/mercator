@@ -1,0 +1,30 @@
+{
+  "id": "french-revolution",
+  "epochId": "enlightenment",
+  "title": "French Revolution",
+  "kind": "Revolution",
+  "tags": ["Republic", "Terror", "Europe"],
+  "summary": "Old-regime France collapsed in a decade of upheaval that abolished the monarchy, redrew society, and sent shockwaves across Europe.",
+  "pin": [2.35, 48.85],
+  "yearStart": 1789,
+  "yearEnd": 1799,
+  "stories": [
+    {
+      "id": "fall-of-the-monarchy",
+      "title": "Fall of the Monarchy",
+      "summary": "From the Bastille to the guillotine — how France overthrew its king.",
+      "tags": ["Paris", "Republic"],
+      "yearStart": 1789,
+      "yearEnd": 1793,
+      "map": { "center": [2.0, 47.0], "zoom": 5 },
+      "events": [
+        { "id": "bastille", "order": 1, "type": "uprising", "year": 1789, "dateLabel": "14 Jul 1789", "title": "Storming of the Bastille", "coords": [2.37, 48.85], "body": "Parisians stormed the royal fortress-prison, seizing arms and killing its governor. The event became the symbolic birth of the Revolution.", "wikipedia": "https://en.wikipedia.org/wiki/Storming_of_the_Bastille" },
+        { "id": "versailles-march", "order": 2, "type": "uprising", "year": 1789, "dateLabel": "5–6 Oct 1789", "title": "Women's March on Versailles", "coords": [2.13, 48.8], "body": "Thousands of market women marched from Paris to Versailles demanding bread. They forced the royal family to return to the capital under popular pressure.", "wikipedia": "https://en.wikipedia.org/wiki/Women%27s_March_on_Versailles" },
+        { "id": "varennes", "order": 3, "type": "expedition", "year": 1791, "dateLabel": "Jun 1791", "title": "Flight to Varennes", "coords": [5.55, 48.86], "body": "Louis XVI and his family fled Paris in disguise, hoping to reach royalist forces. They were recognised and arrested at Varennes, destroying trust in the king.", "wikipedia": "https://en.wikipedia.org/wiki/Flight_to_Varennes" },
+        { "id": "execution-king", "order": 4, "type": "uprising", "year": 1793, "dateLabel": "21 Jan 1793", "title": "Execution of the King", "coords": [2.32, 48.87], "body": "The Convention tried Louis XVI for treason and sent him to the guillotine. Europe's great powers recoiled at regicide and prepared for war.", "wikipedia": "https://en.wikipedia.org/wiki/Execution_of_Louis_XVI" },
+        { "id": "the-terror", "order": 5, "type": "uprising", "year": 1793, "dateLabel": "1793–1794", "title": "The Terror", "coords": [2.35, 48.85], "body": "The Committee of Public Safety ruled by emergency decree. Tens of thousands died on the guillotine or in mass executions as revolution consumed its own.", "wikipedia": "https://en.wikipedia.org/wiki/Reign_of_Terror" }
+      ]
+    },
+    { "id": "rise-of-napoleon", "title": "Rise of Napoleon", "summary": "From artillery captain to First Consul.", "tags": ["Coup", "Directory"], "comingSoon": true, "yearStart": 1795, "yearEnd": 1799, "events": [] }
+  ]
+}
