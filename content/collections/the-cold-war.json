@@ -1,0 +1,31 @@
+{
+  "id": "the-cold-war",
+  "epochId": "contemporary",
+  "title": "The Cold War",
+  "kind": "Conflict",
+  "tags": ["Superpowers", "Nuclear", "Ideology"],
+  "summary": "For four decades the United States and Soviet Union faced off across a divided world, never quite going to war — until one side collapsed.",
+  "pin": [-30.0, 45.0],
+  "yearStart": 1947,
+  "yearEnd": 1991,
+  "stories": [
+    {
+      "id": "cuban-missile-crisis",
+      "title": "The Cuban Missile Crisis",
+      "summary": "Thirteen days in October 1962 when nuclear war seemed imminent.",
+      "tags": ["Cuba", "Nuclear"],
+      "yearStart": 1962,
+      "yearEnd": 1962,
+      "map": { "center": [-60.0, 30.0], "zoom": 3 },
+      "events": [
+        { "id": "u2-discovery", "order": 1, "type": "discovery", "year": 1962, "dateLabel": "14 Oct 1962", "title": "U-2 Discovers the Missiles", "coords": [-82.37, 23.13], "body": "An American U-2 reconnaissance flight photographed Soviet medium-range ballistic missiles under construction in western Cuba. The images reached Kennedy the next morning.", "wikipedia": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis" },
+        { "id": "naval-quarantine", "order": 2, "type": "naval", "year": 1962, "dateLabel": "22 Oct 1962", "title": "Naval Quarantine", "coords": [-75.0, 24.0], "body": "Kennedy announced a 'quarantine' of Cuba and ordered the Navy to intercept Soviet ships carrying weapons. The world watched as warships converged in the Caribbean.", "wikipedia": "https://en.wikipedia.org/wiki/United_States_embargo_against_Cuba" },
+        { "id": "excomm", "order": 3, "type": "summit", "year": 1962, "dateLabel": "16–29 Oct 1962", "title": "ExComm Deliberations", "coords": [-77.04, 38.9], "body": "Kennedy's Executive Committee debated options from air strikes to invasion. The group leaned toward a blockade and secret diplomacy rather than immediate military action.", "wikipedia": "https://en.wikipedia.org/wiki/ExComm" },
+        { "id": "secret-negotiations", "order": 4, "type": "treaty", "year": 1962, "dateLabel": "27 Oct 1962", "title": "Secret Negotiations", "coords": [-77.04, 38.9], "body": "Through back channels, the US offered to remove Jupiter missiles from Turkey if the Soviets withdrew from Cuba. Khrushchev accepted the deal on the crisis's most dangerous day.", "wikipedia": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis#Secret_negotiations" },
+        { "id": "withdrawal", "order": 5, "type": "treaty", "year": 1962, "dateLabel": "28 Oct–Nov 1962", "title": "Withdrawal", "coords": [-82.37, 23.13], "body": "Khrushchev ordered the dismantling of the missile sites. Soviet ships turned back and the weapons were removed under UN inspection. The closest brush with nuclear war in the Cold War had passed.", "wikipedia": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis#Resolution" }
+      ]
+    },
+    { "id": "berlin-blockade", "title": "Berlin Blockade", "summary": "The first major crisis of the Cold War in a divided city.", "tags": ["Berlin", "Airlift"], "comingSoon": true, "yearStart": 1948, "yearEnd": 1949, "events": [] },
+    { "id": "fall-of-the-wall", "title": "Fall of the Wall", "summary": "Berliners breach the symbol of division.", "tags": ["Berlin", "1989"], "comingSoon": true, "yearStart": 1989, "yearEnd": 1989, "events": [] }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "id": "norman-conquest",
+  "epochId": "middle-ages",
+  "title": "Norman Conquest",
+  "kind": "War",
+  "tags": [
+    "England",
+    "Normandy",
+    "1066"
+  ],
+  "summary": "Duke William's claim to the English throne — told through the battles of a single fateful year that replaced Anglo-Saxon rule with a Norman dynasty.",
+  "pin": [
+    -1,
+    52.5
+  ],
+  "yearStart": 1066,
+  "yearEnd": 1070,
+  "stories": [
+    {
+      "id": "1066",
+      "title": "1066",
+      "summary": "Three battles, two kings dead, and a new ruler crowned in Westminster.",
+      "tags": [
+        "Hastings",
+        "Dynasty"
+      ],
+      "yearStart": 1066,
+      "yearEnd": 1066,
+      "map": {
+        "center": [
+          -0.5,
+          53.5
+        ],
+        "zoom": 6
+      },
+      "events": [
+        {
+          "id": "stamford-bridge",
+          "order": 1,
+          "type": "battle",
+          "year": 1066,
+          "dateLabel": "25 Sep 1066",
+          "title": "Stamford Bridge",
+          "coords": [
+            -0.91,
+            54.02
+          ],
+          "body": "King Harold Godwinson marched north at speed and surprised an invading Norwegian army led by Harald Hardrada at Stamford Bridge. The English victory was total — but it left Harold's forces exhausted just as William's fleet was crossing the Channel.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Stamford_Bridge"
+        },
+        {
+          "id": "pevensey-landing",
+          "order": 2,
+          "type": "expedition",
+          "year": 1066,
+          "dateLabel": "28 Sep 1066",
+          "title": "Norman Landing at Pevensey",
+          "coords": [
+            0.34,
+            50.82
+          ],
+          "body": "William, Duke of Normandy, landed unopposed at Pevensey on the Sussex coast while Harold was still in the north. His army fortified a camp and began ravaging the countryside to lure the English king into battle on ground of William's choosing.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Norman_conquest_of_England"
+        },
+        {
+          "id": "battle-of-hastings",
+          "order": 3,
+          "type": "battle",
+          "year": 1066,
+          "dateLabel": "14 Oct 1066",
+          "title": "Battle of Hastings",
+          "coords": [
+            0.49,
+            50.91
+          ],
+          "body": "Harold rushed south and confronted William near Hastings. All day the Norman cavalry charged the English shield wall on Senlac Hill; late in the afternoon Harold was killed — tradition says by an arrow in the eye — and the English line collapsed.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Hastings"
+        },
+        {
+          "id": "march-on-london",
+          "order": 4,
+          "type": "conquest",
+          "year": 1066,
+          "dateLabel": "Dec 1066",
+          "title": "March on London",
+          "coords": [
+            -0.13,
+            51.51
+          ],
+          "body": "After Hastings, William advanced cautiously toward London, burning and fortifying as he went. English resistance crumbled as nobles submitted; the city opened its gates and William entered Westminster to claim the throne Edward had once promised him.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Norman_conquest_of_England"
+        },
+        {
+          "id": "coronation-of-william",
+          "order": 5,
+          "type": "founding",
+          "year": 1066,
+          "dateLabel": "25 Dec 1066",
+          "title": "Coronation of William",
+          "coords": [
+            -0.13,
+            51.5
+          ],
+          "body": "William was crowned King of England in Westminster Abbey on Christmas Day. When Norman guards outside mistook the cheering inside for a riot and set fires, the new king trembled on his throne — an omen, some said, of the violent years ahead.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Coronation_of_William_the_Conqueror"
+        }
+      ]
+    },
+    {
+      "id": "harrying-of-the-north",
+      "title": "The Harrying of the North",
+      "summary": "William's brutal suppression of northern rebellion.",
+      "tags": [
+        "Rebellion",
+        "Yorkshire"
+      ],
+      "comingSoon": true,
+      "yearStart": 1069,
+      "yearEnd": 1070,
+      "events": []
+    }
+  ]
+}

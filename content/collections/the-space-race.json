@@ -1,0 +1,30 @@
+{
+  "id": "the-space-race",
+  "epochId": "contemporary",
+  "title": "The Space Race",
+  "kind": "Exploration",
+  "tags": ["NASA", "Soviet Union", "Moon"],
+  "summary": "Two superpowers competed to reach the heavens — from Sputnik's beep to bootprints on the lunar surface.",
+  "pin": [-95.0, 30.0],
+  "yearStart": 1957,
+  "yearEnd": 1972,
+  "stories": [
+    {
+      "id": "to-the-moon",
+      "title": "To the Moon",
+      "summary": "Five milestones from the first satellite to Apollo 11.",
+      "tags": ["Apollo", "Soviet space"],
+      "yearStart": 1957,
+      "yearEnd": 1969,
+      "map": { "center": [0.0, 20.0], "zoom": 1 },
+      "events": [
+        { "id": "sputnik", "order": 1, "type": "founding", "year": 1957, "dateLabel": "4 Oct 1957", "title": "Sputnik 1", "coords": [37.62, 55.75], "body": "The Soviet Union launched the world's first artificial satellite. Its radio beep from orbit shocked Americans and opened the space age.", "wikipedia": "https://en.wikipedia.org/wiki/Sputnik_1" },
+        { "id": "gagarin", "order": 2, "type": "expedition", "year": 1961, "dateLabel": "12 Apr 1961", "title": "Gagarin's Flight", "coords": [45.92, 46.0], "body": "Yuri Gagarin orbited Earth aboard Vostok 1, becoming the first human in space. The feat galvanised Kennedy's pledge to land Americans on the Moon before 1970.", "wikipedia": "https://en.wikipedia.org/wiki/Yuri_Gagarin" },
+        { "id": "apollo-8", "order": 3, "type": "expedition", "year": 1968, "dateLabel": "Dec 1968", "title": "Apollo 8 Around the Moon", "coords": [-95.09, 29.55], "body": "Apollo 8 became the first crewed mission to leave Earth orbit and circle the Moon. The crew's Christmas Eve broadcast and Earthrise photograph captivated the world.", "wikipedia": "https://en.wikipedia.org/wiki/Apollo_8" },
+        { "id": "apollo-11", "order": 4, "type": "discovery", "year": 1969, "dateLabel": "20 Jul 1969", "title": "Apollo 11 Landing", "coords": [23.47, 0.67], "body": "Neil Armstrong and Buzz Aldrin landed the Eagle in the Sea of Tranquility. Armstrong's first step fulfilled Kennedy's goal and marked humanity's greatest voyage of exploration.", "wikipedia": "https://en.wikipedia.org/wiki/Apollo_11" },
+        { "id": "splashdown", "order": 5, "type": "expedition", "year": 1969, "dateLabel": "24 Jul 1969", "title": "Splashdown & Return", "coords": [-169.5, 13.3], "body": "The command module Columbia splashed down in the Pacific. The crew entered quarantine and returned to ticker-tape parades — the space race's decisive American victory.", "wikipedia": "https://en.wikipedia.org/wiki/Apollo_11#Return" }
+      ]
+    },
+    { "id": "shuttle-era", "title": "The Shuttle Era", "summary": "Reusable spacecraft and the space station age.", "tags": ["Shuttle", "ISS"], "comingSoon": true, "yearStart": 1981, "yearEnd": 2011, "events": [] }
+  ]
+}

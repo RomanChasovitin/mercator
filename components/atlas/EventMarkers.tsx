@@ -6,9 +6,7 @@ import { useMap } from "@/components/atlas/MapProvider";
 import type { Story } from "@/lib/content/schema";
 
 export function EventMarkers({
-  story,
-  activeEventId,
-  onSelect,
+  story, activeEventId, onSelect,
 }: {
   story: Story;
   activeEventId: string | null;
@@ -25,7 +23,7 @@ export function EventMarkers({
       el.dataset.eventId = event.id;
       el.textContent = String(event.order);
       el.className =
-        "flex h-7 w-7 items-center justify-center rounded-full border-2 border-accent bg-background text-sm font-bold text-primary shadow-none";
+        "flex h-6 w-6 items-center justify-center rounded-full border border-primary/70 bg-background text-xs font-bold text-primary shadow-[0_0_8px_rgba(232,192,116,0.4)]";
       el.addEventListener("click", (e) => {
         e.stopPropagation();
         onSelect(event.id);
@@ -36,19 +34,11 @@ export function EventMarkers({
     return () => markers.forEach((m) => m.remove());
   }, [map, ready, story, onSelect]);
 
-  // Reflect the active marker visually (fixed size — no scale, avoids anchor jump).
+  // Hide the active event's dot (it is drawn by ActiveEventLabel).
   useEffect(() => {
     markersRef.current.forEach((m) => {
       const el = m.getElement();
-      const isActive = el.dataset.eventId === activeEventId;
-      el.classList.toggle("bg-primary", isActive);
-      el.classList.toggle("text-primary-foreground", isActive);
-      el.classList.toggle("border-primary", isActive);
-      el.classList.toggle("shadow-[0_0_0_4px_rgba(232,192,116,0.35),0_0_16px_rgba(232,192,116,0.55)]", isActive);
-      el.classList.toggle("bg-background", !isActive);
-      el.classList.toggle("text-primary", !isActive);
-      el.classList.toggle("border-accent", !isActive);
-      el.classList.toggle("shadow-none", !isActive);
+      el.style.visibility = el.dataset.eventId === activeEventId ? "hidden" : "visible";
     });
   }, [activeEventId]);
 

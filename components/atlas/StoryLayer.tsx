@@ -3,57 +3,55 @@
 import { useEffect } from "react";
 import { useMap } from "@/components/atlas/MapProvider";
 import { EventMarkers } from "@/components/atlas/EventMarkers";
-import { EventPanel } from "@/components/atlas/EventPanel";
-import { SequenceStrip } from "@/components/atlas/SequenceStrip";
+import { ActiveEventLabel } from "@/components/atlas/ActiveEventLabel";
+import { EventDrawer } from "@/components/atlas/EventDrawer";
 import { StoryHeader } from "@/components/atlas/StoryHeader";
 import type { Story } from "@/lib/content/schema";
 
 function prefersReducedMotion() {
-  return (
-    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
+  return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function fitView(story: Story) {
+  if (story.map) return story.map;
+  const lngs = story.events.map((e) => e.coords[0]);
+  const lats = story.events.map((e) => e.coords[1]);
+  const center: [number, number] = [(Math.min(...lngs) + Math.max(...lngs)) / 2, (Math.min(...lats) + Math.max(...lats)) / 2];
+  return { center, zoom: 4 };
 }
 
 export function StoryLayer({
-  story,
-  activeEventId,
-  onSelect,
-  onClearEvent,
-  onClose,
+  collectionTitle, story, activeEventId, onSelectEvent, onBack, onExit,
 }: {
+  collectionTitle: string;
   story: Story;
-  activeEventId: string | null;
-  onSelect: (eventId: string) => void;
-  onClearEvent: () => void;
-  onClose: () => void;
+  activeEventId: string;
+  onSelectEvent: (eventId: string) => void;
+  onBack: () => void;
+  onExit: () => void;
 }) {
   const { map, ready } = useMap();
+  const activeEvent = story.events.find((e) => e.id === activeEventId) ?? null;
 
-  // Fly to the story's view on open.
   useEffect(() => {
     if (!map || !ready) return;
-    const opts = { center: story.map.center, zoom: story.map.zoom };
+    const opts = fitView(story);
     if (prefersReducedMotion()) map.jumpTo(opts);
     else map.flyTo({ ...opts, duration: 1400, essential: true });
   }, [map, ready, story]);
 
-  // Fly to the selected event.
   useEffect(() => {
-    if (!map || !ready || !activeEventId) return;
-    const event = story.events.find((e) => e.id === activeEventId);
-    if (!event) return;
-    if (prefersReducedMotion()) map.jumpTo({ center: event.coords });
-    else map.flyTo({ center: event.coords, zoom: Math.max(map.getZoom(), 3), duration: 1000 });
-  }, [map, ready, story, activeEventId]);
-
-  const activeEvent = story.events.find((e) => e.id === activeEventId) ?? null;
+    if (!map || !ready || !activeEvent) return;
+    if (prefersReducedMotion()) map.jumpTo({ center: activeEvent.coords });
+    else map.flyTo({ center: activeEvent.coords, zoom: Math.max(map.getZoom(), 4), duration: 1000 });
+  }, [map, ready, activeEvent]);
 
   return (
     <>
-      <StoryHeader story={story} onClose={onClose} />
-      <EventMarkers story={story} activeEventId={activeEventId} onSelect={onSelect} />
-      <SequenceStrip story={story} activeEventId={activeEventId} onSelect={onSelect} />
-      <EventPanel story={story} event={activeEvent} onClose={onClearEvent} onSelect={onSelect} />
+      <StoryHeader collectionTitle={collectionTitle} storyTitle={story.title} onBack={onBack} onExit={onExit} />
+      <EventMarkers story={story} activeEventId={activeEventId} onSelect={onSelectEvent} />
+      {activeEvent && <ActiveEventLabel event={activeEvent} />}
+      {activeEvent && <EventDrawer story={story} event={activeEvent} onSelect={onSelectEvent} />}
     </>
   );
 }

@@ -1,21 +1,27 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import type { Story } from "@/lib/content/schema";
+import { ArrowLeft, X } from "lucide-react";
 
-export function StoryHeader({ story, onClose }: { story: Story; onClose: () => void }) {
+export function StoryHeader({
+  collectionTitle, storyTitle, onBack, onExit,
+}: {
+  collectionTitle: string;
+  storyTitle: string;
+  onBack: () => void;
+  onExit: () => void;
+}) {
   return (
     <>
-      <div className="absolute left-5 top-4 z-10 flex items-center gap-3">
-        <h2 className="font-display text-2xl">{story.title}</h2>
-        <Badge className="bg-primary text-primary-foreground">{story.epoch}</Badge>
+      <div className="absolute left-5 top-4 z-20">
+        <button onClick={onBack} className="flex items-center gap-2 text-foreground hover:text-primary">
+          <ArrowLeft className="h-4 w-4" />
+          <span className="font-display text-xl">{storyTitle}</span>
+        </button>
+        <div className="pl-6 text-xs text-muted-foreground">{collectionTitle}</div>
       </div>
-      <button
-        onClick={onClose}
-        aria-label="Close story"
-        className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card/85 text-muted-foreground hover:text-foreground"
-      >
-        ✕
+      <button onClick={onExit} aria-label="Exit to menu"
+        className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card/85 text-muted-foreground hover:text-foreground">
+        <X className="h-4 w-4" />
       </button>
     </>
   );

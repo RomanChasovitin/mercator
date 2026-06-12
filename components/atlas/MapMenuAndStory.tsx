@@ -2,22 +2,40 @@
 
 import { useEffect } from "react";
 import { useMap, WORLD_VIEW } from "@/components/atlas/MapProvider";
-import { StoryPins } from "@/components/atlas/StoryPins";
+import { CollectionCards } from "@/components/atlas/CollectionCards";
+import { CollectionDrawer } from "@/components/atlas/CollectionDrawer";
 import { StoryLayer } from "@/components/atlas/StoryLayer";
-import type { Story } from "@/lib/content/schema";
+import { EpochSelector } from "@/components/atlas/EpochSelector";
+import { applyEpochTint } from "@/lib/map/style";
+import { getEpoch } from "@/content/epochs";
+import type { Collection, Epoch } from "@/lib/content/schema";
 import type { useAtlas } from "@/lib/state/useAtlas";
 
 export function MapMenuAndStory({
-  stories,
-  atlas,
+  epochs, collections, atlas,
 }: {
-  stories: Story[];
+  epochs: Epoch[];
+  collections: Collection[];
   atlas: ReturnType<typeof useAtlas>;
 }) {
   const { map, ready } = useMap();
-  const { state, openStory, selectEvent, clearEvent, closeStory } = atlas;
-  const story = state.mode === "story" ? stories.find((s) => s.id === state.storyId) : undefined;
+  const { state, selectEpoch, openCollection, closeCollection, openStory, selectEvent, backToCollection, exitToMenu } = atlas;
 
+  const epochCollections = collections.filter((c) => c.epochId === state.epochId);
+  const openCol = state.collectionId ? collections.find((c) => c.id === state.collectionId) ?? null : null;
+  const story =
+    state.mode === "story"
+      ? collections.find((c) => c.id === state.collectionId)?.stories.find((s) => s.id === state.storyId)
+      : undefined;
+
+  // Apply epoch tint whenever the epoch changes.
+  useEffect(() => {
+    if (!map || !ready) return;
+    const epoch = getEpoch(state.epochId);
+    if (epoch) applyEpochTint(map, epoch.tint);
+  }, [map, ready, state.epochId]);
+
+  // Return to world view when entering menu mode.
   useEffect(() => {
     if (!map || !ready || state.mode !== "menu") return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -26,17 +44,28 @@ export function MapMenuAndStory({
     else map.flyTo({ ...opts, duration: 1200 });
   }, [map, ready, state.mode]);
 
-  if (story) {
+  if (story && state.mode === "story") {
     return (
       <StoryLayer
+        collectionTitle={openCol?.title ?? collections.find((c) => c.id === state.collectionId)?.title ?? ""}
         story={story}
         activeEventId={state.eventId}
-        onSelect={selectEvent}
-        onClearEvent={clearEvent}
-        onClose={closeStory}
+        onSelectEvent={selectEvent}
+        onBack={backToCollection}
+        onExit={exitToMenu}
       />
     );
   }
 
-  return <StoryPins stories={stories} onEnter={openStory} />;
+  return (
+    <>
+      <EpochSelector epochs={epochs} activeId={state.epochId} onSelect={selectEpoch} />
+      <CollectionCards collections={epochCollections} onOpen={openCollection} />
+      <CollectionDrawer
+        collection={openCol}
+        onClose={closeCollection}
+        onOpenStory={(storyId) => openCol && openStory(openCol.id, storyId)}
+      />
+    </>
+  );
 }

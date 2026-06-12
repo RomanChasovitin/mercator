@@ -1,0 +1,30 @@
+{
+  "id": "napoleonic-wars",
+  "epochId": "enlightenment",
+  "title": "Napoleonic Wars",
+  "kind": "War",
+  "tags": ["Empire", "Coalitions", "Europe"],
+  "summary": "Napoleon Bonaparte redrew the map of Europe in two decades of campaigns before his final defeat at Waterloo.",
+  "pin": [10.0, 48.0],
+  "yearStart": 1803,
+  "yearEnd": 1815,
+  "stories": [
+    {
+      "id": "napoleons-campaigns",
+      "title": "Napoleon's Campaigns",
+      "summary": "Five battles that defined the rise and fall of the French Empire.",
+      "tags": ["Grande Armée", "Coalitions"],
+      "yearStart": 1805,
+      "yearEnd": 1815,
+      "map": { "center": [15.0, 50.0], "zoom": 4 },
+      "events": [
+        { "id": "austerlitz", "order": 1, "type": "battle", "year": 1805, "dateLabel": "2 Dec 1805", "title": "Austerlitz", "coords": [16.87, 49.15], "body": "Napoleon lured Austrian and Russian armies onto ground of his choosing and shattered them in the Battle of the Three Emperors. The victory secured French dominance in central Europe.", "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Austerlitz" },
+        { "id": "jena", "order": 2, "type": "battle", "year": 1806, "dateLabel": "14 Oct 1806", "title": "Jena", "coords": [11.58, 50.93], "body": "French forces crushed the Prussian army in a single day. The twin victories at Jena and Auerstedt dissolved Prussia as a great power for years.", "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Jena%E2%80%93Auerstedt" },
+        { "id": "russia-invasion", "order": 3, "type": "conquest", "year": 1812, "dateLabel": "Jun–Dec 1812", "title": "Invasion of Russia", "coords": [37.62, 55.75], "body": "The Grande Armée marched deep into Russia. Moscow burned, supply lines collapsed, and the retreat through winter destroyed an army of half a million men.", "wikipedia": "https://en.wikipedia.org/wiki/French_invasion_of_Russia" },
+        { "id": "leipzig", "order": 4, "type": "battle", "year": 1813, "dateLabel": "16–19 Oct 1813", "title": "Leipzig", "coords": [12.37, 51.34], "body": "Coalition armies converged on Leipzig in the largest battle of the Napoleonic Wars. Napoleon's defeat forced a retreat across the Rhine.", "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Leipzig" },
+        { "id": "waterloo", "order": 5, "type": "battle", "year": 1815, "dateLabel": "18 Jun 1815", "title": "Waterloo", "coords": [4.41, 50.68], "body": "Returned from exile, Napoleon struck at the Anglo-Allied and Prussian armies in Belgium. Wellington and Blücher held and counter-attacked, ending the Hundred Days.", "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Waterloo" }
+      ]
+    },
+    { "id": "peninsular-war", "title": "The Peninsular War", "summary": "Spain bleeds the French Empire in a war of occupation and guerrilla.", "tags": ["Spain", "Guerrilla"], "comingSoon": true, "yearStart": 1807, "yearEnd": 1814, "events": [] }
+  ]
+}

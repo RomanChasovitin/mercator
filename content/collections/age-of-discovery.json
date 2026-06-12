@@ -1,0 +1,150 @@
+{
+  "id": "age-of-discovery",
+  "epochId": "renaissance",
+  "title": "Age of Discovery",
+  "kind": "Exploration",
+  "tags": [
+    "Atlantic",
+    "15th century",
+    "Maritime"
+  ],
+  "summary": "European navigators cross unknown oceans and redraw the map of the world — from Columbus's first Atlantic crossing to the routes that linked continents by sea.",
+  "pin": [
+    -9,
+    38
+  ],
+  "yearStart": 1492,
+  "yearEnd": 1522,
+  "stories": [
+    {
+      "id": "columbus-new-world",
+      "title": "Columbus & the New World",
+      "summary": "The 1492 voyage that opened sustained European contact with the Americas.",
+      "tags": [
+        "Columbus",
+        "Atlantic crossing"
+      ],
+      "yearStart": 1492,
+      "yearEnd": 1493,
+      "map": {
+        "center": [
+          -30,
+          25
+        ],
+        "zoom": 2.5
+      },
+      "events": [
+        {
+          "id": "departure-palos",
+          "order": 1,
+          "type": "expedition",
+          "year": 1492,
+          "dateLabel": "3 Aug 1492",
+          "title": "Departure from Palos",
+          "coords": [
+            -6.89,
+            37.22
+          ],
+          "body": "Three ships — the Niña, Pinta, and Santa María — left Palos de la Frontera under the Castilian crown. Columbus sailed west, betting that Asia lay across the Atlantic.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Christopher_Columbus"
+        },
+        {
+          "id": "canary-islands",
+          "order": 2,
+          "type": "expedition",
+          "year": 1492,
+          "dateLabel": "Sep 1492",
+          "title": "Canary Islands",
+          "coords": [
+            -15.43,
+            28.1
+          ],
+          "body": "The fleet stopped at La Gomera in the Canaries to take on supplies and make final repairs. From there Columbus turned west into the open Atlantic on the longest leg of the voyage.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Canary_Islands"
+        },
+        {
+          "id": "landfall-guanahani",
+          "order": 3,
+          "type": "discovery",
+          "year": 1492,
+          "dateLabel": "12 Oct 1492",
+          "title": "Landfall at Guanahani",
+          "coords": [
+            -74.5,
+            24.07
+          ],
+          "path": [
+            [
+              -6.89,
+              37.22
+            ],
+            [
+              -15.43,
+              28.1
+            ],
+            [
+              -74.5,
+              24.07
+            ]
+          ],
+          "body": "After thirty-three days at sea, land was sighted in the Bahamas. Columbus went ashore on an island the Taíno called Guanahani, believing he had reached the Indies.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Guanahani"
+        },
+        {
+          "id": "hispaniola",
+          "order": 4,
+          "type": "founding",
+          "year": 1492,
+          "dateLabel": "Dec 1492",
+          "title": "Hispaniola",
+          "coords": [
+            -69.98,
+            18.52
+          ],
+          "body": "Exploring farther, Columbus reached Hispaniola and founded La Navidad — the first European settlement in the New World. The Santa María ran aground and her timbers were used to build the fort.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Hispaniola"
+        },
+        {
+          "id": "return-spain",
+          "order": 5,
+          "type": "expedition",
+          "year": 1493,
+          "dateLabel": "Mar 1493",
+          "title": "Return to Spain",
+          "coords": [
+            -6.89,
+            37.22
+          ],
+          "body": "Columbus sailed home with gold, captive Taíno people, and news of new lands. His return to Palos set off a wave of exploration that would reshape trade, empire, and the map itself.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Voyages_of_Christopher_Columbus"
+        }
+      ]
+    },
+    {
+      "id": "da-gama-to-india",
+      "title": "Da Gama to India",
+      "summary": "Portugal opens a sea route to India around the Cape of Good Hope.",
+      "tags": [
+        "Portugal",
+        "Spice trade"
+      ],
+      "comingSoon": true,
+      "yearStart": 1497,
+      "yearEnd": 1499,
+      "events": []
+    },
+    {
+      "id": "magellans-circumnavigation",
+      "title": "Magellan's Circumnavigation",
+      "summary": "The first voyage to circle the globe, completed by Elcano.",
+      "tags": [
+        "Pacific",
+        "Circumnavigation"
+      ],
+      "comingSoon": true,
+      "yearStart": 1519,
+      "yearEnd": 1522,
+      "events": []
+    }
+  ]
+}

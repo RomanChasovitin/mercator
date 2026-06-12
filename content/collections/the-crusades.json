@@ -1,0 +1,136 @@
+{
+  "id": "the-crusades",
+  "epochId": "middle-ages",
+  "title": "The Crusades",
+  "kind": "War",
+  "tags": [
+    "Holy War",
+    "Levant",
+    "Christendom"
+  ],
+  "summary": "Armed pilgrimages from Western Europe to reclaim the Holy Land — from Urban II's call at Clermont to the kingdoms that briefly held Jerusalem.",
+  "pin": [
+    35.2,
+    38.5
+  ],
+  "yearStart": 1095,
+  "yearEnd": 1204,
+  "stories": [
+    {
+      "id": "first-crusade",
+      "title": "The First Crusade",
+      "summary": "From Pope Urban's summons to the storming of Jerusalem and the battle that followed.",
+      "tags": [
+        "Pilgrimage",
+        "Holy Land"
+      ],
+      "yearStart": 1095,
+      "yearEnd": 1099,
+      "map": {
+        "center": [
+          35,
+          38
+        ],
+        "zoom": 5
+      },
+      "events": [
+        {
+          "id": "council-of-clermont",
+          "order": 1,
+          "type": "summit",
+          "year": 1095,
+          "dateLabel": "27 Nov 1095",
+          "title": "Council of Clermont",
+          "coords": [
+            3.08,
+            45.78
+          ],
+          "body": "Pope Urban II addressed a church council and nobles at Clermont, urging Western knights to aid the Byzantine Empire and recover Jerusalem from Muslim rule. His sermon ignited a wave of popular enthusiasm that would send tens of thousands eastward.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Council_of_Clermont"
+        },
+        {
+          "id": "siege-of-nicaea",
+          "order": 2,
+          "type": "siege",
+          "year": 1097,
+          "dateLabel": "May – Jun 1097",
+          "title": "Siege of Nicaea",
+          "coords": [
+            29.72,
+            40.43
+          ],
+          "body": "The crusader host laid siege to Nicaea, the Seljuk capital in Anatolia and a key obstacle on the road to Jerusalem. After weeks of assault the city surrendered to Byzantine forces, who had secretly negotiated its handover before the crusaders could sack it.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Siege_of_Nicaea"
+        },
+        {
+          "id": "battle-of-antioch",
+          "order": 3,
+          "type": "battle",
+          "year": 1098,
+          "dateLabel": "Jun 1098",
+          "title": "Battle of Antioch",
+          "coords": [
+            36.2,
+            36.2
+          ],
+          "body": "After an eight-month siege, crusaders seized Antioch only to be immediately besieged in turn by a relieving Seljuk army. A desperate sortie led by Bohemond of Taranto routed the besiegers and secured the greatest city of northern Syria for the expedition.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Siege_of_Antioch"
+        },
+        {
+          "id": "siege-of-jerusalem",
+          "order": 4,
+          "type": "siege",
+          "year": 1099,
+          "dateLabel": "Jun – Jul 1099",
+          "title": "Siege of Jerusalem 1099",
+          "coords": [
+            35.21,
+            31.77
+          ],
+          "body": "A remnant of the original crusader army, now shrunken and starving, assaulted Jerusalem's walls in the summer heat. After fierce fighting the city fell on 15 July; the ensuing massacre of its inhabitants shocked even contemporaries.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(1099)"
+        },
+        {
+          "id": "battle-of-ascalon",
+          "order": 5,
+          "type": "battle",
+          "year": 1099,
+          "dateLabel": "12 Aug 1099",
+          "title": "Battle of Ascalon",
+          "coords": [
+            34.57,
+            31.67
+          ],
+          "body": "An Egyptian Fatimid army marched north to retake Jerusalem while most crusaders were dispersing homeward. Godfrey of Bouillon led a surprise attack at Ascalon that shattered the Fatimid force and secured the newborn Kingdom of Jerusalem — for a time.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Ascalon"
+        }
+      ]
+    },
+    {
+      "id": "third-crusade",
+      "title": "Third Crusade",
+      "summary": "Richard the Lionheart, Saladin, and the fight for the coast.",
+      "tags": [
+        "Saladin",
+        "Richard I"
+      ],
+      "comingSoon": true,
+      "yearStart": 1189,
+      "yearEnd": 1192,
+      "events": []
+    },
+    {
+      "id": "fourth-crusade",
+      "title": "Fourth Crusade",
+      "summary": "A crusade diverted to Constantinople.",
+      "tags": [
+        "Constantinople",
+        "Venice"
+      ],
+      "comingSoon": true,
+      "yearStart": 1202,
+      "yearEnd": 1204,
+      "events": []
+    }
+  ]
+}

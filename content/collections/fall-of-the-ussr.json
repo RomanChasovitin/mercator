@@ -1,0 +1,30 @@
+{
+  "id": "fall-of-the-ussr",
+  "epochId": "contemporary",
+  "title": "Fall of the USSR",
+  "kind": "Politics",
+  "tags": ["Soviet Union", "1991", "Independence"],
+  "summary": "In a single astonishing year the Soviet Union unraveled — from reform to coup to dissolution.",
+  "pin": [37.62, 55.75],
+  "yearStart": 1985,
+  "yearEnd": 1991,
+  "stories": [
+    {
+      "id": "1991",
+      "title": "1991",
+      "summary": "Five moments that ended the Soviet experiment.",
+      "tags": ["Gorbachev", "Yeltsin"],
+      "yearStart": 1985,
+      "yearEnd": 1991,
+      "map": { "center": [50.0, 55.0], "zoom": 3 },
+      "events": [
+        { "id": "perestroika", "order": 1, "type": "summit", "year": 1985, "dateLabel": "Mar 1985", "title": "Perestroika Announced", "coords": [37.62, 55.75], "body": "Mikhail Gorbachev became General Secretary and launched perestroika and glasnost — restructuring and openness meant to revive a stagnant system but which ultimately loosened its foundations.", "wikipedia": "https://en.wikipedia.org/wiki/Perestroika" },
+        { "id": "baltic-independence", "order": 2, "type": "uprising", "year": 1990, "dateLabel": "Mar 1990", "title": "Baltic Independence", "coords": [24.11, 56.95], "body": "Lithuania declared restoration of independence, followed by Latvia and Estonia. Moscow's attempts to suppress the Baltic republics failed and emboldened separatists across the union.", "wikipedia": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union" },
+        { "id": "august-coup", "order": 3, "type": "uprising", "year": 1991, "dateLabel": "19–21 Aug 1991", "title": "The August Coup", "coords": [37.62, 55.75], "body": "Hardline Communists detained Gorbachev at his Crimean dacha and declared a state of emergency. Boris Yeltsin rallied resistance at the White House and the coup collapsed in three days.", "wikipedia": "https://en.wikipedia.org/wiki/1991_Soviet_coup_attempt" },
+        { "id": "belavezha", "order": 4, "type": "treaty", "year": 1991, "dateLabel": "8 Dec 1991", "title": "Belavezha Accords", "coords": [23.73, 52.08], "body": "Leaders of Russia, Ukraine, and Belarus met in a Belarusian hunting lodge and declared the Soviet Union dissolved, replacing it with the Commonwealth of Independent States.", "wikipedia": "https://en.wikipedia.org/wiki/Belovezh_Accords" },
+        { "id": "dissolution", "order": 5, "type": "treaty", "year": 1991, "dateLabel": "26 Dec 1991", "title": "Dissolution", "coords": [37.62, 55.75], "body": "The Supreme Soviet voted itself out of existence. Gorbachev resigned and the hammer and sickle came down from the Kremlin — the Cold War was over.", "wikipedia": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union" }
+      ]
+    },
+    { "id": "new-russia", "title": "The New Russia", "summary": "From chaos to Putin's consolidation.", "tags": ["Yeltsin", "Transition"], "comingSoon": true, "yearStart": 1991, "yearEnd": 2000, "events": [] }
+  ]
+}
