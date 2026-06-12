@@ -1,0 +1,97 @@
+{
+  "id": "world-war-ii",
+  "epochId": "modern-era",
+  "title": "World War II",
+  "kind": "War",
+  "tags": ["Global", "20th century", "Total war"],
+  "summary": "The deadliest conflict in human history, told across its major theatres — from the fall of the 1930s peace to the ruins of Berlin.",
+  "pin": [15.0, 50.0],
+  "yearStart": 1939,
+  "yearEnd": 1945,
+  "stories": [
+    {
+      "id": "eastern-front",
+      "title": "Eastern Front",
+      "summary": "The titanic German–Soviet struggle that decided the war in Europe.",
+      "tags": ["Invasion", "Attrition"],
+      "yearStart": 1941,
+      "yearEnd": 1943,
+      "map": { "center": [34.0, 53.0], "zoom": 4 },
+      "events": [
+        {
+          "id": "barbarossa",
+          "order": 1,
+          "type": "conquest",
+          "year": 1941,
+          "dateLabel": "22 Jun 1941",
+          "title": "Operation Barbarossa",
+          "coords": [23.66, 51.27],
+          "body": "Germany launched the largest land invasion in history, sending three million Axis troops across the Soviet frontier. Caught mid-reorganisation, the Red Army reeled back hundreds of kilometres in weeks.",
+          "images": [
+            { "src": "https://commons.wikimedia.org/wiki/Special:FilePath/German_troops_crossing_the_Soviet_border.jpg", "alt": "German troops crossing the Soviet border during Operation Barbarossa, 1941", "credit": "Bundesarchiv via Wikimedia Commons", "license": "CC BY-SA 3.0 DE" }
+          ],
+          "wikipedia": "https://en.wikipedia.org/wiki/Operation_Barbarossa"
+        },
+        {
+          "id": "leningrad",
+          "order": 2,
+          "type": "siege",
+          "year": 1941,
+          "dateLabel": "Sep 1941 – Jan 1944",
+          "title": "Siege of Leningrad",
+          "coords": [30.31, 59.94],
+          "body": "Axis forces encircled Leningrad for nearly 900 days. Cut off from supply, over a million civilians died of starvation and cold, yet the city never fell.",
+          "images": [
+            { "src": "https://commons.wikimedia.org/wiki/Special:FilePath/RIAN_archive_324_In_besieged_Leningrad.jpg", "alt": "Civilians in besieged Leningrad", "credit": "RIA Novosti via Wikimedia Commons", "license": "CC BY-SA 3.0" }
+          ],
+          "wikipedia": "https://en.wikipedia.org/wiki/Siege_of_Leningrad"
+        },
+        {
+          "id": "moscow",
+          "order": 3,
+          "type": "battle",
+          "year": 1941,
+          "dateLabel": "Oct 1941 – Jan 1942",
+          "title": "Battle of Moscow",
+          "coords": [37.62, 55.75],
+          "body": "The German advance stalled in the mud and frost at the gates of Moscow. A Soviet counter-offensive in December drove the Wehrmacht back, ending hopes of a quick victory.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Moscow"
+        },
+        {
+          "id": "stalingrad",
+          "order": 4,
+          "type": "battle",
+          "year": 1942,
+          "dateLabel": "Aug 1942 – Feb 1943",
+          "title": "Battle of Stalingrad",
+          "coords": [44.52, 48.71],
+          "body": "Months of street fighting ground down the German 6th Army, which was then encircled and destroyed. Stalingrad is widely seen as the war's turning point in Europe.",
+          "images": [
+            { "src": "https://commons.wikimedia.org/wiki/Special:FilePath/RIAN_archive_602161_Center_of_Stalingrad_after_liberation.jpg", "alt": "Centre of Stalingrad after liberation", "credit": "RIA Novosti via Wikimedia Commons", "license": "CC BY-SA 3.0" }
+          ],
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad"
+        },
+        {
+          "id": "kursk",
+          "order": 5,
+          "type": "battle",
+          "year": 1943,
+          "dateLabel": "Jul – Aug 1943",
+          "title": "Battle of Kursk",
+          "coords": [36.19, 51.73],
+          "body": "The largest tank battle in history ended the Wehrmacht's offensive capacity in the East. From Kursk onward, the Red Army held the strategic initiative for the rest of the war.",
+          "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Kursk"
+        }
+      ]
+    },
+    { "id": "road-to-war", "title": "Road to War", "summary": "Diplomacy and crises of the 1930s.", "tags": ["Diplomacy", "Crisis"], "comingSoon": true, "yearStart": 1936, "yearEnd": 1939, "events": [] },
+    { "id": "outbreak", "title": "Outbreak", "summary": "Anschluss, Poland, and the fall of France.", "tags": ["Invasion", "Blitzkrieg"], "comingSoon": true, "yearStart": 1938, "yearEnd": 1940, "events": [] },
+    { "id": "soviet-counteroffensive", "title": "Soviet Counteroffensive", "summary": "The Red Army drives west.", "tags": ["Offensive"], "comingSoon": true, "yearStart": 1943, "yearEnd": 1944, "events": [] },
+    { "id": "d-day", "title": "D-Day & Normandy", "summary": "The Western Allies return to France.", "tags": ["Landing", "Liberation"], "comingSoon": true, "yearStart": 1944, "yearEnd": 1944, "events": [] },
+    { "id": "on-to-berlin", "title": "On to Berlin", "summary": "The final advance into Germany.", "tags": ["Offensive", "Endgame"], "comingSoon": true, "yearStart": 1945, "yearEnd": 1945, "events": [] },
+    { "id": "north-africa", "title": "North African Front", "summary": "The desert war.", "tags": ["Desert war"], "comingSoon": true, "yearStart": 1940, "yearEnd": 1943, "events": [] },
+    { "id": "italy", "title": "Italian Front", "summary": "The slow climb up the peninsula.", "tags": ["Campaign"], "comingSoon": true, "yearStart": 1943, "yearEnd": 1945, "events": [] },
+    { "id": "pacific", "title": "Pacific War", "summary": "Naval war across the Pacific.", "tags": ["Naval", "Island-hopping"], "comingSoon": true, "yearStart": 1941, "yearEnd": 1945, "events": [] },
+    { "id": "aftermath", "title": "Aftermath", "summary": "A new world order takes shape.", "tags": ["Treaty", "New order"], "comingSoon": true, "yearStart": 1945, "yearEnd": 1949, "events": [] }
+  ]
+}
